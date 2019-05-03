@@ -1,0 +1,63 @@
+:root
+{
+
+	--title-bar-height: 32px;
+
+}
+
+html
+{
+
+	margin: 0px;
+	padding: 0px;
+
+}
+
+body
+{
+
+	background-color: var(--primary-background-color);
+
+	border: 2px solid var(--secondary-background-color);
+	border-radius: 8px 4px;
+
+	padding: 0px;
+	margin: 0px;
+
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+
+}
+
+#window-pane
+{
+
+	-webkit-app-region: drag;
+
+	height: var(--title-bar-height);
+
+	background-color: var(--secondary-background-color);
+
+	padding: none;
+	margin: 0px;
+
+}
+
+#window-pane-controls
+{
+}
+
+#window-pane-menus
+{
+}
+
+.window-pane-button
+{
+
+	width: var(--title-bar-height);
+	height: var(--title-bar-height);
+
+}

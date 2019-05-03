@@ -1,0 +1,5 @@
+<div id="window-pane">
+	<div id="window-pane-menus">
+		<input id="window-pane-file" type="image" src="Theme/Icons/File.svg" alt="F" class="window-pane-button">
+		<input id="window-pane-tools" type="image" src="Theme/Icons/Tool.svg" alt="T" class="window-pane-button">
+	

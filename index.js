@@ -7,7 +7,8 @@ function StartTools()
     //TODO: Handle multiple tools, user settings for each type
     var json = {
         width: 800,
-        height: 600
+        height: 600,
+        app: 'Spritesheet'
     };
 
     var win = Toolset.Create(json);

@@ -15,7 +15,7 @@
    version="1.1"
    id="svg8"
    inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
-   sodipodi:docname="Close.svg">
+   sodipodi:docname="Tools.svg">
   <defs
      id="defs2">
     <clipPath
@@ -38,8 +38,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="15.839192"
-     inkscape:cx="-5.8730282"
-     inkscape:cy="8.7125653"
+     inkscape:cx="12.562256"
+     inkscape:cy="12.563772"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -82,18 +82,39 @@
        cx="4.2667418"
        cy="292.85019"
        r="3.7041667" />
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:12.54711723px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#4d4d4d;fill-opacity:1;stroke:none;stroke-width:0.31367788"
-       x="-0.36025122"
-       y="320.84952"
-       id="text4530"
-       transform="matrix(0.62333243,0,0,0.48151153,1.8422871,140.59984)"
-       clip-path="url(#clipPath4546)"><tspan
-         sodipodi:role="line"
-         id="tspan4528"
-         x="-0.36025122"
-         y="320.84952"
-         style="fill:#4d4d4d;stroke-width:0.31367788">X</tspan></text>
+    <rect
+       style="fill:#4d4d4d;stroke-width:0.31938443"
+       id="rect14"
+       width="1.5875002"
+       height="4.49792"
+       x="201.32823"
+       y="210.48526"
+       transform="rotate(42.804924)" />
+    <rect
+       style="fill:#4d4d4d;stroke-width:0.26943946"
+       id="rect24"
+       width="4.2333331"
+       height="1.852097"
+       x="200.00531"
+       y="209.16235"
+       ry="0.26457372"
+       transform="rotate(42.804924)" />
+    <rect
+       style="fill:#000000;stroke-width:0.28285173"
+       id="rect28"
+       width="1.0583333"
+       height="4.2333407"
+       x="201.5928"
+       y="210.48526"
+       ry="0"
+       transform="rotate(42.804924)" />
+    <rect
+       style="fill:#000000;stroke-width:0.26458332"
+       id="rect30"
+       width="3.7041667"
+       height="1.3229166"
+       x="200.2699"
+       y="209.42694"
+       transform="rotate(42.804924)" />
   </g>
 </svg>

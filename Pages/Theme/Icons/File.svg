@@ -15,7 +15,7 @@
    version="1.1"
    id="svg8"
    inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
-   sodipodi:docname="Close.svg">
+   sodipodi:docname="File.svg">
   <defs
      id="defs2">
     <clipPath
@@ -37,9 +37,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="15.839192"
-     inkscape:cx="-5.8730282"
-     inkscape:cy="8.7125653"
+     inkscape:zoom="31.678384"
+     inkscape:cx="11.963625"
+     inkscape:cy="17.288041"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -61,7 +61,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -82,18 +82,32 @@
        cx="4.2667418"
        cy="292.85019"
        r="3.7041667" />
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:12.54711723px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#4d4d4d;fill-opacity:1;stroke:none;stroke-width:0.31367788"
-       x="-0.36025122"
-       y="320.84952"
-       id="text4530"
-       transform="matrix(0.62333243,0,0,0.48151153,1.8422871,140.59984)"
-       clip-path="url(#clipPath4546)"><tspan
-         sodipodi:role="line"
-         id="tspan4528"
-         x="-0.36025122"
-         y="320.84952"
-         style="fill:#4d4d4d;stroke-width:0.31367788">X</tspan></text>
+    <rect
+       style="fill:#333333;stroke-width:0.28578267"
+       id="rect14"
+       width="3.7041667"
+       height="5.2916665"
+       x="2.3812499"
+       y="290.12085" />
+    <path
+       style="fill:#000000;stroke-width:0.28983673"
+       d="m 4.4979167,290.12085 h 1.5875001 v 1.5875"
+       id="rect18"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccc" />
+    <rect
+       style="fill:#000000;stroke-width:0.26458332"
+       id="rect21"
+       width="1.8520833"
+       height="4.7624998"
+       x="2.6458333"
+       y="290.38544" />
+    <rect
+       style="fill:#000000;stroke-width:0.26458332"
+       id="rect23"
+       width="1.3229166"
+       height="3.4395833"
+       x="4.4979167"
+       y="291.70834" />
   </g>
 </svg>

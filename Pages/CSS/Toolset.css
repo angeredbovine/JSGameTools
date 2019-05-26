@@ -19,7 +19,6 @@ body
 	background-color: var(--primary-background-color);
 
 	border: 2px solid var(--secondary-background-color);
-	border-radius: 8px 4px;
 
 	padding: 0px;
 	margin: 0px;
@@ -48,6 +47,14 @@ body
 
 #window-pane-controls
 {
+
+	--webkit-app-region: no-drag;
+
+	position: fixed;
+
+	top: 0px;
+	right: 6px;
+
 }
 
 #window-pane-menus

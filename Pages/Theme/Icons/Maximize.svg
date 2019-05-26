@@ -15,7 +15,7 @@
    version="1.1"
    id="svg8"
    inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
-   sodipodi:docname="Close.svg">
+   sodipodi:docname="Maximize.svg">
   <defs
      id="defs2">
     <clipPath
@@ -39,7 +39,7 @@
      inkscape:pageshadow="2"
      inkscape:zoom="15.839192"
      inkscape:cx="-5.8730282"
-     inkscape:cy="8.7125653"
+     inkscape:cy="6.187184"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -82,18 +82,19 @@
        cx="4.2667418"
        cy="292.85019"
        r="3.7041667" />
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:12.54711723px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#4d4d4d;fill-opacity:1;stroke:none;stroke-width:0.31367788"
-       x="-0.36025122"
-       y="320.84952"
-       id="text4530"
-       transform="matrix(0.62333243,0,0,0.48151153,1.8422871,140.59984)"
-       clip-path="url(#clipPath4546)"><tspan
-         sodipodi:role="line"
-         id="tspan4528"
-         x="-0.36025122"
-         y="320.84952"
-         style="fill:#4d4d4d;stroke-width:0.31367788">X</tspan></text>
+    <rect
+       style="fill:#333333;stroke-width:0.23595804"
+       id="rect3730"
+       width="4.4979172"
+       height="4.2333512"
+       x="2.1166666"
+       y="290.64999" />
+    <rect
+       style="fill:#000000;stroke-width:0.22804232"
+       id="rect3734"
+       width="3.4395833"
+       height="3.1750124"
+       x="2.6458333"
+       y="291.17917" />
   </g>
 </svg>

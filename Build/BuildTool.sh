@@ -13,8 +13,12 @@ else
         ${DIRECTORY}WindowPaneScripts.htmlf \
         ${TOOL}Scripts.htmlf \
         ${DIRECTORY}WindowPaneHeaderBottom.htmlf \
+        ${DIRECTORY}WindowPaneFile.htmlf \
+        ${TOOL}File.htmlf \
         ${DIRECTORY}WindowPaneTools.htmlf \
         ${TOOL}Tools.htmlf \
+        ${DIRECTORY}WindowPaneSettings.htmlf \
+        ${TOOL}Settings.htmlf \
         ${DIRECTORY}WindowPaneControls.htmlf \
         ${DIRECTORY}Content.htmlf \
         ${TOOL}Content.htmlf \

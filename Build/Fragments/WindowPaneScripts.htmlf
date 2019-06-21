@@ -1,1 +1,4 @@
 		<!-- Scripts -->
+		<script src="JS/Tools/ToolCommands.js"></script>
+		<script src="JS/Tools/Icons.js"></script>
+		

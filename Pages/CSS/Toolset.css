@@ -2,6 +2,7 @@
 {
 
 	--title-bar-height: 32px;
+	--normal-text-size: 16px;
 
 }
 
@@ -18,7 +19,7 @@ body
 
 	background-color: var(--primary-background-color);
 
-	border: 2px solid var(--secondary-background-color);
+	border: 3px solid var(--secondary-background-color);
 
 	padding: 0px;
 	margin: 0px;
@@ -40,25 +41,68 @@ body
 
 	background-color: var(--secondary-background-color);
 
-	padding: none;
+	padding: 0px;
 	margin: 0px;
+
+	overflow: hidden;
 
 }
 
 #window-pane-controls
 {
 
-	--webkit-app-region: no-drag;
+	-webkit-app-region: no-drag;
 
 	position: fixed;
 
 	top: 0px;
-	right: 6px;
+	right: 2px;
 
 }
 
 #window-pane-menus
 {
+
+	-webkit-app-region: no-drag;
+
+	position: fixed;
+
+	top: 0px;
+	left: 2px;
+
+}
+
+.window-pane-singlemenu
+{
+
+	height: var(--title-bar-height);
+
+	float: left;
+	overflow: hidden;
+
+	background-color: var(--secondary-background-color);
+
+	margin: 0px;
+
+}
+
+.window-pane-menucontent
+{
+
+	display: none;
+	position: absolute;
+	min-width: 160px;
+	z-index: 1;
+
+	background-color: transparent;
+
+}
+
+.window-pane-singlemenu:hover .window-pane-menucontent
+{
+
+	display:block;
+
 }
 
 .window-pane-button
@@ -66,5 +110,32 @@ body
 
 	width: var(--title-bar-height);
 	height: var(--title-bar-height);
+
+	padding: 0px 3px 0px 3px;
+
+	margin: 0px;
+
+}
+
+.window-pane-menuitem
+{
+
+	font-size: var(--normal-text-size);
+	color: var(--primary-text-color);
+
+	background-color: var(--secondary-background-color);
+
+	float: none;
+	display: block;
+	text-align: left;
+
+	padding: 2px 5px 2px 5px;
+
+	border-style: solid;
+	border-width: 1px 0px 1px 2px;
+	border-color: var(--divider-color);
+	border-radius: 0px 10px 10px 0px;
+
+	box-shadow: 5px 5px 2px black;
 
 }

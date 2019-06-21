@@ -5,13 +5,34 @@
 		<link rel="stylesheet" href="CSS/Theme.css"/>
 		<link rel="stylesheet" href="CSS/Toolset.css"/>
 		<!-- Scripts -->
+		<script src="JS/Tools/ToolCommands.js"></script>
+		<script src="JS/Tools/Icons.js"></script>
+		
 	</head>
 	<body>
-		<div id="window-pane">
-			<div id="window-pane-menus">
-				<input id="window-pane-file" type="image" src="Theme/Icons/File.svg" alt="F" class="window-pane-button">
-				<input id="window-pane-tools" type="image" src="Theme/Icons/Tools.svg" alt="T" class="window-pane-button">
-				<input id="window-pane-settings" type="image" src="Theme/Icons/Gear.svg" alt="S" class="window-pane-button">
+                <div id="window-pane">
+                        <div id="window-pane-menus">
+                                <div class="window-pane-singlemenu">
+                                        <input id="window-pane-file" type="image" src="Theme/Icons/File.svg" alt="F" class="window-pane-button">
+                                        <div class="window-pane-menucontent">
+                                                <a class="window-pane-menuitem">New</a>
+                                                <a class="window-pane-menuitem">Open</a>
+                                                <a class="window-pane-menuitem">Save</a>
+                                                <a class="window-pane-menuitem">Save As...</a>
+					</div>
+				</div>
+				<div class="window-pane-singlemenu">
+					<input id="window-pane-tools" type="image" src="Theme/Icons/Tools.svg" alt="T" class="window-pane-button">
+					<div class="window-pane-menucontent">
+                                                <a class="window-pane-menuitem">Import Image</a>
+                                        </div>
+                                </div>
+                                <div class="window-pane-singlemenu">
+                                        <input id="window-pane-settings" type="image" src="Theme/Icons/Gear.svg" alt="S" class="window-pane-button">
+                                        <div class="window-pane-menucontent">
+                                                <a class="window-pane-menuitem">Save Preferences</a>
+					</div>
+				</div>
 			</div>
 			<div id="window-pane-controls">
 				<input id="window-pane-minimize" type="image" src="Theme/Icons/Minimize.svg" alt="-" class="window-pane-button">

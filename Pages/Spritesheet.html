@@ -3,7 +3,8 @@
 	<head>
 		<!-- Stylesheets -->
 		<link rel="stylesheet" href="CSS/Theme.css"/>
-		<link rel="stylesheet" href="CSS/Toolset.css"/>
+		<link rel="stylesheet" href="CSS/ToolsetHeader.css"/>
+		<link rel="stylesheet" href="CSS/ToolsetBody.css"/>
 		<!-- Scripts -->
 		<script src="JS/Tools/ToolCommands.js"></script>
 		<script src="JS/Tools/Icons.js"></script>
@@ -13,7 +14,7 @@
                 <div id="window-pane">
                         <div id="window-pane-menus">
                                 <div class="window-pane-singlemenu">
-                                        <input id="window-pane-file" type="image" src="Theme/Icons/File.svg" alt="F" class="window-pane-button">
+                                        <input id="window-pane-file" type="image" src="Theme/Icons/File.svg" alt="File" class="window-pane-button">
                                         <div class="window-pane-menucontent">
                                                 <a class="window-pane-menuitem">New</a>
                                                 <a class="window-pane-menuitem">Open</a>
@@ -22,13 +23,13 @@
 					</div>
 				</div>
 				<div class="window-pane-singlemenu">
-					<input id="window-pane-tools" type="image" src="Theme/Icons/Tools.svg" alt="T" class="window-pane-button">
+					<input id="window-pane-tools" type="image" src="Theme/Icons/Tools.svg" alt="Tools" class="window-pane-button">
 					<div class="window-pane-menucontent">
                                                 <a class="window-pane-menuitem">Import Image</a>
                                         </div>
                                 </div>
                                 <div class="window-pane-singlemenu">
-                                        <input id="window-pane-settings" type="image" src="Theme/Icons/Gear.svg" alt="S" class="window-pane-button">
+                                        <input id="window-pane-settings" type="image" src="Theme/Icons/Gear.svg" alt="Settings" class="window-pane-button">
                                         <div class="window-pane-menucontent">
                                                 <a class="window-pane-menuitem">Save Preferences</a>
 					</div>
@@ -40,5 +41,11 @@
 				<input id="window-pane-close" type="image" src="Theme/Icons/Close.svg" alt="X" class="window-pane-button">
 			</div>
 		</div>
+                <div class="base-content-area">
+                        <div class="base-content-text">Use the <img src="Theme/Icons/File.svg" alt="file"> menu to get started.</div>
+                </div>
+                <canvas class="tool-content-area">
+                        Please upgrade your Chromium instance to support canvas.
+                </canvas>
 	</body>
 </html>

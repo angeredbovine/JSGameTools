@@ -1,5 +1,5 @@
 					</div>
 				</div>
 				<div class="window-pane-singlemenu">
-					<input id="window-pane-tools" type="image" src="Theme/Icons/Tools.svg" alt="T" class="window-pane-button">
+					<input id="window-pane-tools" type="image" src="Theme/Icons/Tools.svg" alt="Tools" class="window-pane-button">
 					<div class="window-pane-menucontent">

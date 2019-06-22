@@ -21,7 +21,6 @@ ToolSet.Create = function(json)
         });
 
         win.loadFile('Pages/' + json.app + '.html');
-
         return win;
 
 }

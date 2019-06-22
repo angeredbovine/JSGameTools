@@ -20,7 +20,7 @@ else
         ${DIRECTORY}WindowPaneSettings.htmlf \
         ${TOOL}Settings.htmlf \
         ${DIRECTORY}WindowPaneControls.htmlf \
-        ${DIRECTORY}Content.htmlf \
+        ${DIRECTORY}BaseContent.htmlf \
         ${TOOL}Content.htmlf \
         ${DIRECTORY}WindowPaneFooter.htmlf \
         > ${OUTPUT_DIRECTORY}$1.html

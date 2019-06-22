@@ -30,6 +30,8 @@ body
 	right: 0px;
 	bottom: 0px;
 
+	overflow: hidden;
+
 }
 
 #window-pane
@@ -55,8 +57,9 @@ body
 
 	position: fixed;
 
-	top: 0px;
 	right: 2px;
+
+	margin: 0px;
 
 }
 
@@ -67,8 +70,9 @@ body
 
 	position: fixed;
 
-	top: 0px;
 	left: 2px;
+
+	margin: 0px;
 
 }
 
@@ -83,6 +87,7 @@ body
 	background-color: var(--secondary-background-color);
 
 	margin: 0px;
+	padding: 0px;
 
 }
 
@@ -94,7 +99,11 @@ body
 	min-width: 160px;
 	z-index: 1;
 
+	top: 100%;
+
 	background-color: transparent;
+
+	margin: 0px;
 
 }
 
@@ -137,5 +146,14 @@ body
 	border-radius: 0px 10px 10px 0px;
 
 	box-shadow: 5px 5px 2px black;
+
+}
+
+.window-pane-menuitem:hover
+{
+
+	color: var(--highlight-text-color);
+	background-color: var(--primary-background-color);
+	border-color: var(--primary-text-color);
 
 }

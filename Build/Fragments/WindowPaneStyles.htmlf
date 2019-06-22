@@ -1,3 +1,4 @@
 		<!-- Stylesheets -->
 		<link rel="stylesheet" href="CSS/Theme.css"/>
-		<link rel="stylesheet" href="CSS/Toolset.css"/>
+		<link rel="stylesheet" href="CSS/ToolsetHeader.css"/>
+		<link rel="stylesheet" href="CSS/ToolsetBody.css"/>

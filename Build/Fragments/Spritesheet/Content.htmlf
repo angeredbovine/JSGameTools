@@ -1,3 +1,6 @@
-                <canvas class="tool-content-area">
+                <canvas id="tool-content-workspace" class="tool-content-area">
                         Please upgrade your Chromium instance to support canvas.
                 </canvas>
+                <div class="tool-dialog" style="width:400px;height:400px">
+                        <div class="tool-dialog-header"></div>
+                </div>

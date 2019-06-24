@@ -9,6 +9,8 @@
 		<script src="JS/Tools/ToolCommands.js"></script>
 		<script src="JS/Tools/Icons.js"></script>
 		
+                <script src="JS/Shared/Dialogs.js"></script>
+                <script src="JS/Shared/Workspace.js"></script>
 	</head>
 	<body>
                 <div id="window-pane">
@@ -16,10 +18,10 @@
                                 <div class="window-pane-singlemenu">
                                         <input id="window-pane-file" type="image" src="Theme/Icons/File.svg" alt="File" class="window-pane-button">
                                         <div class="window-pane-menucontent">
-                                                <a class="window-pane-menuitem">New</a>
-                                                <a class="window-pane-menuitem">Open</a>
-                                                <a class="window-pane-menuitem">Save</a>
-                                                <a class="window-pane-menuitem">Save As...</a>
+                                                <a id="window-pane-file-new" class="window-pane-menuitem">New</a>
+                                                <a id="window-pane-file-open" class="window-pane-menuitem">Open</a>
+                                                <a id="window-pane-file-save" class="window-pane-menuitem">Save</a>
+                                                <a id="window-pane-file-saveas" class="window-pane-menuitem">Save As...</a>
 					</div>
 				</div>
 				<div class="window-pane-singlemenu">
@@ -44,8 +46,11 @@
                 <div class="base-content-area">
                         <div class="base-content-text">Use the <img src="Theme/Icons/File.svg" alt="file"> menu to get started.</div>
                 </div>
-                <canvas class="tool-content-area">
+                <canvas id="tool-content-workspace" class="tool-content-area">
                         Please upgrade your Chromium instance to support canvas.
                 </canvas>
+                <div class="tool-dialog" style="width:400px;height:400px">
+                        <div class="tool-dialog-header"></div>
+                </div>
 	</body>
 </html>

@@ -48,6 +48,9 @@ body
 
 	overflow: hidden;
 
+	position: relative;
+	z-index: 99999;
+
 }
 
 #window-pane-controls
@@ -97,7 +100,6 @@ body
 	display: none;
 	position: absolute;
 	min-width: 160px;
-	z-index: 1;
 
 	top: 100%;
 
@@ -110,7 +112,7 @@ body
 .window-pane-singlemenu:hover .window-pane-menucontent
 {
 
-	display:block;
+	display: block;
 
 }
 

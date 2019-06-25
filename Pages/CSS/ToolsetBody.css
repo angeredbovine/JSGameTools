@@ -79,6 +79,20 @@
 
 }
 
+.tool-dialog-resize
+{
+
+        height: var(--dialog-header-height);
+        width: var(--dialog-header-height);
+
+        position: absolute;
+        z-index: 4;
+
+        bottom: 0px;
+        right: 0px;
+
+}
+
 .tool-dialog-close
 {
 

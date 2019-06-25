@@ -5,4 +5,5 @@
                         <div class="tool-dialog-header">
                                 <input id="test-dialog-close" type="image" src="Theme/Icons/Close.svg" alt="Close Test" class="tool-dialog-close">
                         </div>
+                        <input id="test-dialog-resize" type="image" src="Theme/Icons/Resize.svg" alt="Resize" class="tool-dialog-resize">
                 </div>

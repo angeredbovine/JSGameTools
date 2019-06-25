@@ -38,7 +38,7 @@ function EnableDrag(element)
 
                 var left = e.clientX - offsetX;
                 left = Math.max(0, left);
-                left = Math.min(parseInt(document.body.clientWidth, 10) - parseInt(element.style.width), left);
+                left = Math.min(parseInt(document.body.clientWidth, 10) - parseInt(element.style.width, 10), left);
 
                 var top = e.clientY - offsetY;
                 top = Math.max(parseInt(getComputedStyle(document.documentElement).getPropertyValue('--title-bar-height'), 10), top);
@@ -58,6 +58,71 @@ function EnableDrag(element)
         }
 
         header.addEventListener("mousedown", DragStart);
+
+}
+
+function EnableResize(element)
+{
+
+        var resize = element.getElementsByClassName("tool-dialog-resize");
+
+        if(resize.length <= 0)
+        {
+
+                Logger.LogError("Dialog " + element.id + " does not have a proper resize handle.");
+
+                return;
+
+        }
+
+        resize = resize[0];
+
+        var offsetX, offsetY;
+
+        function ResizeStart(e)
+        {
+
+                e = e || window.event;
+                e.preventDefault();
+
+                offsetX = parseInt(element.style.width, 10) - (e.clientX - element.offsetLeft);
+                offsetY = parseInt(element.style.height, 10) - (e.clientY - element.offsetTop);
+
+                document.addEventListener("mousemove", ResizeMove);
+                document.addEventListener("mouseup", ResizeStop);
+
+        }
+
+        function ResizeMove(e)
+        {
+
+                e = e || window.event;
+                e.preventDefault();
+
+                var headerSize = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--dialog-header-height'), 10);
+
+                var width = e.clientX + offsetX - element.offsetLeft;
+                width = Math.max(headerSize, width);
+                width = Math.min(parseInt(document.body.clientWidth, 10) - element.offsetLeft, width);
+
+                var height = e.clientY + offsetY - element.offsetTop;
+                height = Math.max(2 * headerSize, height);
+                height = Math.min(parseInt(document.body.clientHeight, 10) - element.offsetTop, height);
+
+                element.style.width = width + "px";
+                element.style.height = height + "px";
+
+        }
+
+        function ResizeStop(e)
+        {
+
+                document.removeEventListener("mousemove", ResizeMove);
+                document.removeEventListener("mouseup", ResizeStop);
+
+        }
+
+        resize.addEventListener("mousedown", ResizeStart);
 
 }
 
@@ -90,6 +155,7 @@ document.addEventListener('DOMContentLoaded', function()
                 });
 
                 EnableDrag(dialogs[i]);
+                EnableResize(dialogs[i]);
 
         }
 

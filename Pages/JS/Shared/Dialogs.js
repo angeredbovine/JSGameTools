@@ -6,7 +6,7 @@ function EnableDrag(element)
         if(header.length <= 0)
         {
 
-                Logger.LogError("Dialog " + element.name + " does not have a proper dialog header.");
+                Logger.LogError("Dialog " + element.id + " does not have a proper dialog header.");
 
                 return;
 
@@ -68,6 +68,26 @@ document.addEventListener('DOMContentLoaded', function()
 
         for(var i = 0; i < dialogs.length; i++)
         {
+
+                var open = document.getElementById(dialogs[i].id + "-open");
+                open.addEventListener("click", function(e)
+                {
+
+                        var target = e.target || e.srcElement;
+                        var dialog = document.getElementById(target.id.slice(0,-5));
+                        dialog.style.display = "block";
+
+                });
+
+                var close = document.getElementById(dialogs[i].id + "-close");
+                close.addEventListener("click", function(e)
+                {
+
+                        var target = e.target || e.srcElement;
+                        var dialog = document.getElementById(target.id.slice(0,-6));
+                        dialog.style.display = "none";
+
+                });
 
                 EnableDrag(dialogs[i]);
 

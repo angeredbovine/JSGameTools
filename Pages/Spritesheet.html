@@ -28,6 +28,7 @@
 					<input id="window-pane-tools" type="image" src="Theme/Icons/Tools.svg" alt="Tools" class="window-pane-button">
 					<div class="window-pane-menucontent">
                                                 <a class="window-pane-menuitem">Import Image</a>
+                                                <a class="window-pane-menuitem" id="test-dialog-open">Open Test Dialog</a>
                                         </div>
                                 </div>
                                 <div class="window-pane-singlemenu">
@@ -38,19 +39,21 @@
 				</div>
 			</div>
 			<div id="window-pane-controls">
-				<input id="window-pane-minimize" type="image" src="Theme/Icons/Minimize.svg" alt="-" class="window-pane-button">
-				<input id="window-pane-maximize" type="image" src="Theme/Icons/Maximize.svg" alt="+" class="window-pane-button">
-				<input id="window-pane-close" type="image" src="Theme/Icons/Close.svg" alt="X" class="window-pane-button">
+				<input id="window-pane-minimize" type="image" src="Theme/Icons/Minimize.svg" alt="Minimize" class="window-pane-button">
+				<input id="window-pane-maximize" type="image" src="Theme/Icons/Maximize.svg" alt="Maximize" class="window-pane-button">
+				<input id="window-pane-close" type="image" src="Theme/Icons/Close.svg" alt="Close" class="window-pane-button">
 			</div>
 		</div>
                 <div class="base-content-area">
-                        <div class="base-content-text">Use the <img src="Theme/Icons/File.svg" alt="file"> menu to get started.</div>
+                        <div class="base-content-text">Use the <img src="Theme/Icons/File.svg" alt="file"> menu to get started!</div>
                 </div>
                 <canvas id="tool-content-workspace" class="tool-content-area">
                         Please upgrade your Chromium instance to support canvas.
                 </canvas>
-                <div class="tool-dialog" style="width:400px;height:400px">
-                        <div class="tool-dialog-header"></div>
+                <div id="test-dialog" class="tool-dialog" style="width:400px;height:400px">
+                        <div class="tool-dialog-header">
+                                <input id="test-dialog-close" type="image" src="Theme/Icons/Close.svg" alt="Close Test" class="tool-dialog-close">
+                        </div>
                 </div>
 	</body>
 </html>

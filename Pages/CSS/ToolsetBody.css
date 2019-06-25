@@ -1,3 +1,10 @@
+:root
+{
+
+        --dialog-header-height: 24px;
+
+}
+
 .base-content-area
 {
 
@@ -60,7 +67,7 @@
 .tool-dialog-header
 {
 
-	height: var(--title-bar-height);
+	height: var(--dialog-header-height);
         width: 100%;
 
 	background-color: var(--secondary-background-color);
@@ -69,5 +76,19 @@
 	margin: 0px;
 
 	overflow: hidden;
+
+}
+
+.tool-dialog-close
+{
+
+	position: absolute;
+
+	right: 2px;
+
+	margin: 0px;
+
+        width: var(--dialog-header-height);
+        height: var(--dialog-header-height);
 
 }

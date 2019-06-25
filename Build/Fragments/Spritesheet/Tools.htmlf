@@ -1,1 +1,2 @@
                                                 <a class="window-pane-menuitem">Import Image</a>
+                                                <a class="window-pane-menuitem" id="test-dialog-open">Open Test Dialog</a>

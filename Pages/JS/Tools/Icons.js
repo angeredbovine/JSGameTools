@@ -27,4 +27,20 @@ document.addEventListener('DOMContentLoaded', function()
 
         });
 
+        //Currently broken - hides the menu forever
+        /*var items = document.getElementsByClassName("window-pane-menuitem");
+        for(var i = 0; i < items.length; i++)
+        {
+
+                items[i].addEventListener("click", function(e)
+                {
+
+                        var target = e.target || e.srcElement;
+                        var menu = target.closest(".window-pane-menucontent");
+                        menu.style.display = "none";
+
+                });
+
+        }*/
+
 });

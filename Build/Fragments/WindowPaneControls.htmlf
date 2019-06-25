@@ -2,8 +2,8 @@
 				</div>
 			</div>
 			<div id="window-pane-controls">
-				<input id="window-pane-minimize" type="image" src="Theme/Icons/Minimize.svg" alt="-" class="window-pane-button">
-				<input id="window-pane-maximize" type="image" src="Theme/Icons/Maximize.svg" alt="+" class="window-pane-button">
-				<input id="window-pane-close" type="image" src="Theme/Icons/Close.svg" alt="X" class="window-pane-button">
+				<input id="window-pane-minimize" type="image" src="Theme/Icons/Minimize.svg" alt="Minimize" class="window-pane-button">
+				<input id="window-pane-maximize" type="image" src="Theme/Icons/Maximize.svg" alt="Maximize" class="window-pane-button">
+				<input id="window-pane-close" type="image" src="Theme/Icons/Close.svg" alt="Close" class="window-pane-button">
 			</div>
 		</div>

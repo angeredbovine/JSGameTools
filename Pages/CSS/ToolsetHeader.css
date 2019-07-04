@@ -151,6 +151,14 @@ body
 
 }
 
+.window-pane-menuitem-disabled
+{
+
+	pointer-events: none;
+	color: var(--divider-color);
+
+}
+
 .window-pane-menuitem:hover
 {
 

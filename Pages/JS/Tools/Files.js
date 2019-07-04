@@ -132,7 +132,7 @@ FileData.prototype.Path = function(p)
 FileData.AddFile = function(file)
 {
 
-        if(files.hasOwnProperty(file.Path()))
+        if(FileData.files.hasOwnProperty(file.Path()))
         {
 
                 //TODO:Handle potential duplicate

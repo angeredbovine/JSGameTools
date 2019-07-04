@@ -1,0 +1,23 @@
+                </div>
+                <div id="popup-container" class="popup-container">
+                        <div class="popup-box" id="popup-newfile">
+                                <div class="popup-header">
+                                        New File
+                                </div>
+                                <table class="popup-data-table">
+                                        <tr class="popup-data-row">
+                                                <td class="popup-data-name" data-input="popup-newfile-name">
+                                                        Name:
+                                                </td>
+                                                <td class="popup-data-input">
+                                                        <input type="text" id="popup-newfile-name" class="popup-data-text popup-data-file" pattern="\w+" data-key="name"/>
+                                                </td>
+                                        </tr>
+                                        <tr class="popup-data-row">
+                                                <td colspan="2" class="popup-data-buttons">
+                                                        <input type="button" id="popup-newfile-ok" class="tool-button popup-data-ok" value="Confirm"/>
+                                                        <input type="button" id="popup-newfile-cancel" class="tool-button popup-cancel" value="Cancel"/>
+                                                </td>
+                                        </tr>
+                                </table>
+                        </div>

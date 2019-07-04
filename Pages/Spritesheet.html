@@ -8,9 +8,18 @@
 		<!-- Scripts -->
 		<script src="JS/Tools/ToolCommands.js"></script>
 		<script src="JS/Tools/Icons.js"></script>
-		
+		<script src="JS/Tools/Popups.js"></script>
+		<script src="JS/Tools/Files.js"></script>
                 <script src="JS/Shared/Dialogs.js"></script>
                 <script src="JS/Shared/Workspace.js"></script>
+
+                <script src="JS/Base/MathHelpers.js"></script>
+                <script src="JS/Base/Resource.js"></script>
+                <script src="JS/Base/Spritesheet.js"></script>
+
+                <script src="JS/Spritesheet/Constants.js"></script>
+                <script src="JS/Spritesheet/Images.js"></script>
+                <script src="JS/Spritesheet/SpritesheetFile.js"></script>
 	</head>
 	<body>
                 <div id="window-pane">
@@ -27,14 +36,14 @@
 				<div class="window-pane-singlemenu">
 					<input id="window-pane-tools" type="image" src="Theme/Icons/Tools.svg" alt="Tools" class="window-pane-button">
 					<div class="window-pane-menucontent">
-                                                <a class="window-pane-menuitem">Import Image</a>
-                                                <a class="window-pane-menuitem" id="test-dialog-open">Open Test Dialog</a>
+                                                <a class="window-pane-menuitem" id="import-image-button">Import Image</a>
+                                                <a class="window-pane-menuitem" id="frame-dialog-open">Open Frame Dialog</a>
                                         </div>
                                 </div>
                                 <div class="window-pane-singlemenu">
                                         <input id="window-pane-settings" type="image" src="Theme/Icons/Gear.svg" alt="Settings" class="window-pane-button">
                                         <div class="window-pane-menucontent">
-                                                <a class="window-pane-menuitem">Save Preferences</a>
+                                                <a class="window-pane-menuitem">Edit Preferences</a>
 					</div>
 				</div>
 			</div>
@@ -44,17 +53,92 @@
 				<input id="window-pane-close" type="image" src="Theme/Icons/Close.svg" alt="Close" class="window-pane-button">
 			</div>
 		</div>
-                <div class="base-content-area">
+                <div id="base-content-area" class="base-content-area">
                         <div class="base-content-text">Use the <img src="Theme/Icons/File.svg" alt="file"> menu to get started!</div>
                 </div>
+                <div id="tool-content-container" class="tool-content-container">
                 <canvas id="tool-content-workspace" class="tool-content-area">
                         Please upgrade your Chromium instance to support canvas.
                 </canvas>
-                <div id="test-dialog" class="tool-dialog" style="width:400px;height:400px">
+                <div id="frame-dialog" class="tool-dialog">
                         <div class="tool-dialog-header">
-                                <input id="test-dialog-close" type="image" src="Theme/Icons/Close.svg" alt="Close Test" class="tool-dialog-close">
+                                <input id="frame-dialog-close" type="image" src="Theme/Icons/Close.svg" alt="Close Test" class="tool-dialog-close">
                         </div>
-                        <input id="test-dialog-resize" type="image" src="Theme/Icons/Resize.svg" alt="Resize" class="tool-dialog-resize">
+                        <table class="dialog-data-table">
+                                <tr class="dialog-data-row">
+                                        <td class="dialog-data-name" data-input="frame-dialog-number">
+                                                Frame:
+                                        </td>
+                                        <td id="frame-dialog-number" class="dialog-data-info">
+                                                Not Selected
+                                        </td>
+                                </tr>
+                                <tr>
+                                        <td class="dialog-data-name" data-input="frame-dialog-duration">
+                                                Duration (ms):
+                                        </td>
+                                        <td class="dialog-data-input">
+                                                <input type="text" id="frame-dialog-duration" class="dialog-data-text dialog-data-integer" pattern="^\d+$" data-key="duration"/>
+                                        </td>
+                                </tr>
+                                <tr class="dialog-data-row">
+                                        <td class="dialog-data-name" data-input="frame-dialog-x">
+                                                X:
+                                        </td>
+                                        <td class="dialog-data-input">
+                                                <input type="text" id="frame-dialog-x" class="dialog-data-text dialog-data-integer" pattern="^\d+$" data-key="x"/>
+                                        </td>
+                                </tr>
+                                <tr class="dialog-data-row">
+                                        <td class="dialog-data-name" data-input="frame-dialog-y">
+                                                Y:
+                                        </td>
+                                        <td class="dialog-data-input">
+                                                <input type="text" id="frame-dialog-y" class="dialog-data-text dialog-data-integer" pattern="^\d+$" data-key="y"/>
+                                        </td>
+                                </tr>
+                                <tr class="dialog-data-row">
+                                        <td class="dialog-data-name" data-input="frame-dialog-width">
+                                                Width:
+                                        </td>
+                                        <td class="dialog-data-input">
+                                                <input type="text" id="frame-dialog-width" class="dialog-data-text dialog-data-integer" pattern="^\d+$" data-key="width"/>
+                                        </td>
+                                </tr>
+                                <tr class="dialog-data-row">
+                                        <td class="dialog-data-name" data-input="frame-dialog-height">
+                                                Height:
+                                        </td>
+                                        <td class="dialog-data-input">
+                                                <input type="text" id="frame-dialog-height" class="dialog-data-text dialog-data-integer" pattern="^\d+$" data-key="height"/>
+                                        </td>
+                                </tr>
+                        </table>
+                        <input id="frame-dialog-resize" type="image" src="Theme/Icons/Resize.svg" alt="Resize" class="tool-dialog-resize">
                 </div>
+                </div>
+                <div id="popup-container" class="popup-container">
+                        <div class="popup-box" id="popup-newfile">
+                                <div class="popup-header">
+                                        New File
+                                </div>
+                                <table class="popup-data-table">
+                                        <tr class="popup-data-row">
+                                                <td class="popup-data-name" data-input="popup-newfile-name">
+                                                        Name:
+                                                </td>
+                                                <td class="popup-data-input">
+                                                        <input type="text" id="popup-newfile-name" class="popup-data-text popup-data-file" pattern="\w+" data-key="name"/>
+                                                </td>
+                                        </tr>
+                                        <tr class="popup-data-row">
+                                                <td colspan="2" class="popup-data-buttons">
+                                                        <input type="button" id="popup-newfile-ok" class="tool-button popup-data-ok" value="Confirm"/>
+                                                        <input type="button" id="popup-newfile-cancel" class="tool-button popup-cancel" value="Cancel"/>
+                                                </td>
+                                        </tr>
+                                </table>
+                        </div>
+		</div>
 	</body>
 </html>

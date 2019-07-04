@@ -3,6 +3,8 @@
 
         --dialog-header-height: 24px;
 
+        --dialog-data-padding: 8px;
+
 }
 
 .base-content-area
@@ -35,6 +37,20 @@
 
 }
 
+.tool-content-container
+{
+
+        width: 100%;
+        height: 100%;
+
+        z-index: 2;
+
+        position: absolute;
+
+        visibility: hidden;
+
+}
+
 .tool-content-area
 {
 
@@ -45,7 +61,31 @@
 
         position: absolute;
 
-        display: none;
+}
+
+.tool-button
+{
+
+        background-image: linear-gradient(var(--secondary-background-color), var(--primary-background-color));
+
+        color: var(--primary-text-color);
+
+        border: 1px solid var(--divider-color);
+        border-radius: 2px 6px 2px 6px;
+
+        margin: 10px;
+
+}
+
+.tool-button:hover
+{
+
+        background-image: linear-gradient(var(--divider-color), var(--secondary-background-color));
+        color: var(--highlight-text-color);
+
+        border-radius: 3px 7px 3px 7px;
+
+        box-shadow: -1px 0px 1px 1px white;
 
 }
 
@@ -56,11 +96,15 @@
 
         background-color: var(--dark-background-color);
 
-        border: 1px solid var(--secondary-background-color);
+        border: 2px solid var(--secondary-background-color);
 
         z-index: 3;
 
         border-radius: 6px 2px 6px 2px;
+
+        visibility: hidden;
+
+        overflow: hidden;
 
 }
 
@@ -104,5 +148,190 @@
 
         width: var(--dialog-header-height);
         height: var(--dialog-header-height);
+
+}
+
+.dialog-data-table
+{
+
+}
+
+.dialog-data-row
+{
+
+}
+
+.dialog-data-name
+{
+
+        color: var(--primary-text-color);
+        font-weight: bold;
+        font-size: var(--normal-text-size);
+
+        border-bottom: 1px solid var(--secondary-background-color);
+
+        padding: var(--dialog-data-padding);
+
+}
+
+.dialog-data-info
+{
+
+        color: var(--primary-text-color);
+
+        padding: var(--dialog-data-padding);
+
+}
+
+.dialog-data-input
+{
+
+        padding: var(--dialog-data-padding);
+
+}
+
+.dialog-data-text
+{
+
+        color: var(--primary-text-color);
+        background-color: var(--dark-background-color);
+
+        font-size: var(--normal-text-size);
+
+        padding: 4px;
+
+        border: 1px solid var(--divider-color)
+
+}
+
+input.dialog-data-integer:invalid
+{
+
+        box-shadow: -1px 0px 1px 1px red;
+
+}
+
+.popup-container
+{
+
+        width: 100%;
+        height: 100%;
+
+        position: absolute;
+
+        background-color: rgba(0, 0, 0, 0.75);
+
+        z-index: 1000;
+
+        visibility: hidden;
+
+}
+
+.popup-box
+{
+
+        background-color: var(--dark-background-color);
+
+        border: 2px solid var(--divider-color);
+
+        border-radius: 6px 2px 6px 2px;
+
+        overflow: hidden;
+
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+}
+
+.popup-header
+{
+
+        height: var(--dialog-header-height);
+        width: 100%;
+
+        background-color: var(--divider-color);
+        color: var(--primary-text-color);
+
+        font-size: var(--normal-text-size);
+
+        display: block;
+
+        padding: 4px;
+	margin: 0px;
+
+        overflow: hidden;
+
+        border-top: 1px solid var(--divider-color);
+
+}
+
+.popup-data-table
+{
+
+        width: 100%;
+
+}
+
+.popup-data-row
+{
+
+}
+
+.popup-data-name
+{
+
+        color: var(--primary-text-color);
+        font-weight: bold;
+        font-size: var(--normal-text-size);
+
+        border-bottom: 1px solid var(--secondary-background-color);
+
+        padding: var(--dialog-data-padding);
+
+}
+
+.popup-data-info
+{
+
+        color: var(--primary-text-color);
+
+        padding: var(--dialog-data-padding);
+
+}
+
+.popup-data-input
+{
+
+        padding: var(--dialog-data-padding);
+
+}
+
+.popup-data-text
+{
+
+        color: var(--primary-text-color);
+        background-color: var(--dark-background-color);
+
+        font-size: var(--normal-text-size);
+
+        padding: 4px;
+
+        border: 1px solid var(--divider-color)
+
+}
+
+input.popup-data-file:invalid
+{
+
+        box-shadow: -1px 0px 1px 1px red;
+
+}
+
+.popup-data-buttons
+{
+
+        text-align: center;
 
 }

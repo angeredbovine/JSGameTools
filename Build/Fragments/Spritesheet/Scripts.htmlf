@@ -1,2 +1,10 @@
                 <script src="JS/Shared/Dialogs.js"></script>
                 <script src="JS/Shared/Workspace.js"></script>
+
+                <script src="JS/Base/MathHelpers.js"></script>
+                <script src="JS/Base/Resource.js"></script>
+                <script src="JS/Base/Spritesheet.js"></script>
+
+                <script src="JS/Spritesheet/Constants.js"></script>
+                <script src="JS/Spritesheet/Images.js"></script>
+                <script src="JS/Spritesheet/SpritesheetFile.js"></script>

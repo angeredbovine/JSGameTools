@@ -1,9 +1,59 @@
                 <canvas id="tool-content-workspace" class="tool-content-area">
                         Please upgrade your Chromium instance to support canvas.
                 </canvas>
-                <div id="test-dialog" class="tool-dialog" style="width:400px;height:400px">
+                <div id="frame-dialog" class="tool-dialog">
                         <div class="tool-dialog-header">
-                                <input id="test-dialog-close" type="image" src="Theme/Icons/Close.svg" alt="Close Test" class="tool-dialog-close">
+                                <input id="frame-dialog-close" type="image" src="Theme/Icons/Close.svg" alt="Close Test" class="tool-dialog-close">
                         </div>
-                        <input id="test-dialog-resize" type="image" src="Theme/Icons/Resize.svg" alt="Resize" class="tool-dialog-resize">
+                        <table class="dialog-data-table">
+                                <tr class="dialog-data-row">
+                                        <td class="dialog-data-name" data-input="frame-dialog-number">
+                                                Frame:
+                                        </td>
+                                        <td id="frame-dialog-number" class="dialog-data-info">
+                                                Not Selected
+                                        </td>
+                                </tr>
+                                <tr>
+                                        <td class="dialog-data-name" data-input="frame-dialog-duration">
+                                                Duration (ms):
+                                        </td>
+                                        <td class="dialog-data-input">
+                                                <input type="text" id="frame-dialog-duration" class="dialog-data-text dialog-data-integer" pattern="^\d+$" data-key="duration"/>
+                                        </td>
+                                </tr>
+                                <tr class="dialog-data-row">
+                                        <td class="dialog-data-name" data-input="frame-dialog-x">
+                                                X:
+                                        </td>
+                                        <td class="dialog-data-input">
+                                                <input type="text" id="frame-dialog-x" class="dialog-data-text dialog-data-integer" pattern="^\d+$" data-key="x"/>
+                                        </td>
+                                </tr>
+                                <tr class="dialog-data-row">
+                                        <td class="dialog-data-name" data-input="frame-dialog-y">
+                                                Y:
+                                        </td>
+                                        <td class="dialog-data-input">
+                                                <input type="text" id="frame-dialog-y" class="dialog-data-text dialog-data-integer" pattern="^\d+$" data-key="y"/>
+                                        </td>
+                                </tr>
+                                <tr class="dialog-data-row">
+                                        <td class="dialog-data-name" data-input="frame-dialog-width">
+                                                Width:
+                                        </td>
+                                        <td class="dialog-data-input">
+                                                <input type="text" id="frame-dialog-width" class="dialog-data-text dialog-data-integer" pattern="^\d+$" data-key="width"/>
+                                        </td>
+                                </tr>
+                                <tr class="dialog-data-row">
+                                        <td class="dialog-data-name" data-input="frame-dialog-height">
+                                                Height:
+                                        </td>
+                                        <td class="dialog-data-input">
+                                                <input type="text" id="frame-dialog-height" class="dialog-data-text dialog-data-integer" pattern="^\d+$" data-key="height"/>
+                                        </td>
+                                </tr>
+                        </table>
+                        <input id="frame-dialog-resize" type="image" src="Theme/Icons/Resize.svg" alt="Resize" class="tool-dialog-resize">
                 </div>

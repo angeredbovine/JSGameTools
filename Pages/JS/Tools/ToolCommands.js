@@ -1,8 +1,8 @@
-function JSGameTools()
+function Tools()
 {
 }
 
-JSGameTools.Close = function(win)
+Tools.Close = function(win)
 {
 
         win.close();

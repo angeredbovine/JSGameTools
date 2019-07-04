@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function()
         {
 
                 const window = remote.getCurrentWindow();
-                JSGameTools.Close(window);
+                Tools.Close(window);
 
         });
 

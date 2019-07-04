@@ -1,3 +1,4 @@
-                <div class="base-content-area">
+                <div id="base-content-area" class="base-content-area">
                         <div class="base-content-text">Use the <img src="Theme/Icons/File.svg" alt="file"> menu to get started!</div>
                 </div>
+                <div id="tool-content-container" class="tool-content-container">

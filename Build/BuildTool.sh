@@ -22,6 +22,8 @@ else
         ${DIRECTORY}WindowPaneControls.htmlf \
         ${DIRECTORY}BaseContent.htmlf \
         ${TOOL}Content.htmlf \
+        ${DIRECTORY}BasePopups.htmlf \
+        ${TOOL}Popups.htmlf \
         ${DIRECTORY}WindowPaneFooter.htmlf \
         > ${OUTPUT_DIRECTORY}$1.html
 fi

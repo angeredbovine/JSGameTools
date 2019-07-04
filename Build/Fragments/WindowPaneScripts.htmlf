@@ -1,4 +1,5 @@
 		<!-- Scripts -->
 		<script src="JS/Tools/ToolCommands.js"></script>
 		<script src="JS/Tools/Icons.js"></script>
-		
+		<script src="JS/Tools/Popups.js"></script>
+		<script src="JS/Tools/Files.js"></script>

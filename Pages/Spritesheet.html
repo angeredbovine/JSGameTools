@@ -10,11 +10,16 @@
 		<script src="JS/Tools/Icons.js"></script>
 		<script src="JS/Tools/Popups.js"></script>
 		<script src="JS/Tools/Files.js"></script>
+
+		<script src="JS/Base/Logger.js"></script>
                 <script src="JS/Shared/Dialogs.js"></script>
                 <script src="JS/Shared/Workspace.js"></script>
 
                 <script src="JS/Base/MathHelpers.js"></script>
                 <script src="JS/Base/Resource.js"></script>
+                <script src="JS/Base/Vector2.js"></script>
+                <script src="JS/Base/Shape.js"></script>
+                <script src="JS/Base/Box.js"></script>
                 <script src="JS/Base/Spritesheet.js"></script>
 
                 <script src="JS/Spritesheet/Constants.js"></script>
@@ -36,9 +41,9 @@
 				<div class="window-pane-singlemenu">
 					<input id="window-pane-tools" type="image" src="Theme/Icons/Tools.svg" alt="Tools" class="window-pane-button">
 					<div class="window-pane-menucontent">
-						<a class="window-pane-menuitem window-pane-menuitem-disabled" id="window-pane-tool-undo">Undo</a>
-						<a class="window-pane-menuitem window-pane-menuitem-disabled" id="window-pane-tool-redo">Redo</a>
-                                                <a class="window-pane-menuitem" id="import-image-button">Import Image</a>
+						<a class="window-pane-menuitem disabled" id="window-pane-tool-undo">Undo</a>
+						<a class="window-pane-menuitem disabled" id="window-pane-tool-redo">Redo</a>
+                                                <a class="window-pane-menuitem disabled file-needed" id="import-image-button">Import Image</a>
                                                 <a class="window-pane-menuitem" id="frame-dialog-open">Open Frame Dialog</a>
                                         </div>
                                 </div>
@@ -68,10 +73,10 @@
                         </div>
                         <table class="dialog-data-table">
                                 <tr class="dialog-data-row">
-                                        <td class="dialog-data-name" data-input="frame-dialog-number">
+                                        <td class="dialog-data-name" data-input="frame-dialog-index">
                                                 Frame:
                                         </td>
-                                        <td id="frame-dialog-number" class="dialog-data-info">
+                                        <td id="frame-dialog-index" class="dialog-data-info">
                                                 Not Selected
                                         </td>
                                 </tr>
@@ -113,6 +118,12 @@
                                         </td>
                                         <td class="dialog-data-input">
                                                 <input type="text" id="frame-dialog-height" class="dialog-data-text dialog-data-integer" pattern="^\d+$" data-key="height"/>
+                                        </td>
+                                </tr>
+                                <tr class="dialog-data-row">
+                                        <td colspan="2" class="dialog-data-buttons">
+                                                <input type="button" id="frame-dialog-apply" class="tool-button disabled" value="Apply"/>
+                                                <input type="button" id="frame-dialog-delete" class="tool-button dangerous disabled" value="Delete"/>
                                         </td>
                                 </tr>
                         </table>

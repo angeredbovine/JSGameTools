@@ -10,4 +10,9 @@
 	--primary-text-color: #CCCCCC;
 	--highlight-text-color: #FFFFFF;
 
+	--danger-text-color: #FF0000;
+	--danger-highlight-color: #FF4444;
+
+	--selected-color: #FFAAAA;
+
 }

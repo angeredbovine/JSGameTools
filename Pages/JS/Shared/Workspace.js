@@ -56,6 +56,16 @@ Workspace.RenderWorkspace = function()
         context.fillRect(0, 0, Workspace.targetWidth, Workspace.targetHeight);
         context.translate(tileOffsetX, tileOffsetY);
 
+        var file = FileData.GetFile();
+        if(file)
+        {
+
+                context.translate(-Workspace.worldX, -Workspace.worldY);
+                file.Show(context);
+                context.translate(Workspace.worldX, Workspace.worldY);
+                
+        }
+
 }
 
 Workspace.PrepareWorkspace = function()
@@ -151,7 +161,7 @@ Workspace.PrepareWorkspace = function()
                                 Workspace.worldX = 0;
                                 Workspace.worldY = 0;
 
-                                Render();
+                                Workspace.RenderWorkspace();
 
                         }
 

@@ -151,10 +151,16 @@ body
 
 }
 
-.window-pane-menuitem-disabled
+.disabled
 {
 
 	pointer-events: none;
+
+}
+
+.window-pane-menuitem.disabled
+{
+
 	color: var(--divider-color);
 
 }

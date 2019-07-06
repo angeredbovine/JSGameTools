@@ -3,6 +3,9 @@
 
                 <script src="JS/Base/MathHelpers.js"></script>
                 <script src="JS/Base/Resource.js"></script>
+                <script src="JS/Base/Vector2.js"></script>
+                <script src="JS/Base/Shape.js"></script>
+                <script src="JS/Base/Box.js"></script>
                 <script src="JS/Base/Spritesheet.js"></script>
 
                 <script src="JS/Spritesheet/Constants.js"></script>

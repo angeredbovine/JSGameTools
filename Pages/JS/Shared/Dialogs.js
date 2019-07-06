@@ -3,6 +3,77 @@ function Dialog()
 
 }
 
+Dialog.FillDialog = function(dialogId, json)
+{
+
+        for (var key in json)
+        {
+
+                if (json.hasOwnProperty(key))
+                {
+
+                        var input = document.getElementById(dialogId + "-" + key);
+
+                        if(!input)
+                        {
+
+                                Logger.LogError("Attempting to set missing dialog data " + key);
+
+                                return;
+
+                        }
+
+                        if(input instanceof HTMLInputElement)
+                        {
+
+                                input.value = json[key];
+
+                        }
+                        else
+                        {
+
+                                input.innerHTML = json[key];
+
+                        }
+
+                }
+
+        }
+
+}
+
+Dialog.PullData = function(dialogId)
+{
+
+        var json = {};
+        var fields = document.getElementById(dialogId).getElementsByClassName("dialog-data-name");
+
+        for(var i = 0; i < fields.length; i++)
+        {
+
+                var id = fields[i].dataset.input;
+
+                var input = document.getElementById(id);
+
+                if(input instanceof HTMLInputElement)
+                {
+
+                        json[input.dataset.key] = input.value;
+
+                }
+                else
+                {
+
+                        json[input.dataset.key] = input.text;
+
+                }
+
+        }
+
+        return json;
+
+}
+
 Dialog.EnableDrag = function(element)
 {
 

@@ -204,7 +204,21 @@
 
 }
 
+.dialog-data-buttons
+{
+
+        text-align: center;
+
+}
+
 input.dialog-data-integer:invalid
+{
+
+        box-shadow: -1px 0px 1px 1px red;
+
+}
+
+input.dialog-data-decimal:invalid
 {
 
         box-shadow: -1px 0px 1px 1px red;
@@ -333,5 +347,26 @@ input.popup-data-file:invalid
 {
 
         text-align: center;
+
+}
+
+.dangerous
+{
+
+        color: var(--danger-text-color);
+
+}
+
+.dangerous:hover
+{
+
+        color: var(--danger-highlight-color);
+
+}
+
+.tool-button.disabled
+{
+
+        color: var(--divider-color);
 
 }

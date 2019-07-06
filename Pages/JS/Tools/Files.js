@@ -36,6 +36,8 @@ function FileData(path)
 FileData.files = {};
 FileData.currentFile = null;
 
+FileData.isOpen = false;
+
 FileData.prototype.Undo = function()
 {
 
@@ -48,7 +50,7 @@ FileData.prototype.Undo = function()
 
         }
 
-        this.actionStack[this.actionIndex].Undo();
+        this.actionStack[this.actionIndex].Undo(this);
         this.actionIndex -= 1;
 
         return this.actionIndex >= 0;
@@ -68,7 +70,7 @@ FileData.prototype.Redo = function()
         }
 
         this.actionIndex += 1;
-        this.actionStack[this.actionIndex].Do();
+        this.actionStack[this.actionIndex].Do(this);
 
         return this.actionIndex < this.actionStack.length - 1;
 
@@ -95,6 +97,13 @@ FileData.prototype.Show = function(context)
 {
 
         Logger.LogError("Attempting to call abstract Show method on virtual FileData object.");
+
+}
+
+FileData.prototype.Open = function(json)
+{
+
+        Logger.LogError("Attempting to call abstract Open method on virtual FileData object.");
 
 }
 
@@ -158,6 +167,22 @@ FileData.AddNewFile = function(json)
 
         FileData.AddFile(FileData.Construct(path));
 
+        if(!FileData.isOpen)
+        {
+
+                var buttons = document.getElementsByClassName("file-needed");
+
+                for(var i = 0; i < buttons.length; i++)
+                {
+
+                        buttons[i].classList.remove("disabled");
+
+                }
+
+        }
+
+        FileData.isOpen = true;
+
 }
 
 FileData.Construct = function(path)
@@ -179,15 +204,15 @@ FileData.Undo = function()
 
         }
 
-        var canUndo = FileData.files[FileData.currentFile].Undo(action);
+        var canUndo = FileData.files[FileData.currentFile].Undo();
 
         //If we have undone something, we can redo it
-        document.getElementById("window-pane-tool-redo").classList.remove("window-pane-menuitem-disabled");
+        document.getElementById("window-pane-tool-redo").classList.remove("disabled");
 
         if(!canUndo)
         {
 
-                document.getElementById("window-pane-tool-undo").classList.add("window-pane-menuitem-disabled");
+                document.getElementById("window-pane-tool-undo").classList.add("disabled");
 
         }
 
@@ -205,15 +230,15 @@ FileData.Redo = function()
 
         }
 
-        var canRedo = FileData.files[FileData.currentFile].Redo(action);
+        var canRedo = FileData.files[FileData.currentFile].Redo();
 
         //If we have redone something, we can undo it
-        document.getElementById("window-pane-tool-undo").classList.remove("window-pane-menuitem-disabled");
+        document.getElementById("window-pane-tool-undo").classList.remove("disabled");
 
         if(!canRedo)
         {
 
-                document.getElementById("window-pane-tool-redo").classList.add("window-pane-menuitem-disabled");
+                document.getElementById("window-pane-tool-redo").classList.add("disabled");
 
         }
 
@@ -232,6 +257,26 @@ FileData.Do = function(action)
         }
 
         FileData.files[FileData.currentFile].Do(action);
+
+        //If we have done something, we can undo it, but we have erased the rest of the actionStack
+        document.getElementById("window-pane-tool-undo").classList.remove("disabled");
+        document.getElementById("window-pane-tool-redo").classList.add("disabled");
+
+}
+
+FileData.GetFile = function()
+{
+
+        if(!FileData.currentFile)
+        {
+
+                Logger.LogInfo("Attempting to access file when none exist.");
+
+                return;
+
+        }
+
+        return FileData.files[FileData.currentFile];
 
 }
 

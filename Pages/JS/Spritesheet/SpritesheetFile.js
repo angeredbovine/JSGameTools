@@ -1,14 +1,3 @@
-function ImageData(img, x, y, scaleX, scaleY)
-{
-
-	this.image = img;
-
-	this.position = new Vector2(x, y);
-	this.scaleX = scaleX;
-	this.scaleY = scaleY;
-
-}
-
 function SpritesheetFile(path)
 {
 
@@ -24,28 +13,36 @@ SpritesheetFile.prototype.constructor = SpritesheetFile;
 SpritesheetFile.prototype.Show = function(context)
 {
 
+	for(var i = 0; i < this.images.length; i++)
+	{
+
+		var data = this.images[i];
+		context.drawImage(data.image, data.position.X(), data.position.Y(), data.width, data.height);
+
+	}
+
+	if(ImageMethods.selectedImage >= 0 && ImageMethods.selectedImage < this.images.length)
+	{
+
+		var data = this.images[ImageMethods.selectedImage];
+
+		context.beginPath();
+		context.lineWidth = "3";
+		context.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue('--selected-color');
+		context.rect(data.position.X(), data.position.Y(), data.width, data.height);
+		context.stroke();
+
+	}
+
+}
+
+SpritesheetFile.prototype.Open = function(json)
+{
+
 }
 
 SpritesheetFile.prototype.Save = function()
 {
-
-}
-
-SpritesheetFile.prototype.AddImage = function(path, x, y, scaleX, scaleY)
-{
-
-	var file = this;
-
-	var image = new Image();
-	image.src = path;
-	image.onload = function()
-	{
-
-		file.images.push(new ImageData(image, x, y, scaleX, scaleY));
-
-		RenderWorkspace();
-
-	}
 
 }
 

@@ -4,6 +4,8 @@
         -Override the static FileData.construct method to return a copy of the custom file object
 */
 
+var fs = require("fs");
+
 function Action()
 {
 
@@ -114,14 +116,6 @@ FileData.prototype.Save = function()
 
 }
 
-FileData.prototype.SaveAs = function(p)
-{
-
-        this.Path(p);
-        this.Save();
-
-}
-
 FileData.prototype.Path = function(p)
 {
 
@@ -182,6 +176,45 @@ FileData.AddNewFile = function(json)
         }
 
         FileData.isOpen = true;
+
+}
+
+FileData.SaveFile = function()
+{
+
+        if(!FileData.currentFile)
+        {
+
+                Logger.LogError("Attempting to Save without a file active.");
+
+                return;
+
+        }
+
+        var file = FileData.files[FileData.currentFile]
+        var json = file.Save();
+        var data = JSON.stringify(json);
+
+        fs.writeFile(file.Path(), data, function(err)
+        {
+
+                if(err)
+                {
+
+                        Logger.LogError("Error " + err + " writing to " + file.Path());
+
+                        return;
+
+                }
+
+                Logger.LogInfo(file.Path() + " successfully saved!");
+
+        });
+
+}
+
+FileData.SaveFileAs = function()
+{
 
 }
 
@@ -296,6 +329,9 @@ document.addEventListener('DOMContentLoaded', function()
 
         document.getElementById("window-pane-file-save").addEventListener("click", function(e)
         {
+
+                FileData.SaveFile();
+
         });
 
         document.getElementById("window-pane-file-saveas").addEventListener("click", function(e)

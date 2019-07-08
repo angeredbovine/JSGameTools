@@ -44,6 +44,22 @@ SpritesheetFile.prototype.Open = function(json)
 SpritesheetFile.prototype.Save = function()
 {
 
+	var json = {};
+
+	json.images = [];
+
+	for(var i = 0; i < this.images.length; i++)
+	{
+
+		var data = this.images[i].ToJSON(i);
+		data.image = ToolHelpers.ImageToBase64(this.images[i].image);
+
+		json.images.push(data);
+
+	}
+
+	return json;
+
 }
 
 FileData.Construct = function(path)

@@ -7,9 +7,9 @@ function ImageData(img, duration, x, y, width, height)
 
         this.duration = duration;
 
-	this.position = new Vector2(x, y);
-	this.width = width;
-	this.height = height;
+	this.position = new Vector2(parseInt(x, 10), parseInt(y, 10));
+	this.width = parseInt(width, 10);
+	this.height = parseInt(height, 10);
 
 }
 
@@ -198,6 +198,8 @@ ImageMethods.Select = function(index, file)
         document.getElementById("frame-dialog-apply").classList.remove("disabled");
         document.getElementById("frame-dialog-delete").classList.remove("disabled");
 
+	Workspace.RenderWorkspace();
+
 }
 
 ImageMethods.Deselect = function()
@@ -209,6 +211,8 @@ ImageMethods.Deselect = function()
 
         document.getElementById("frame-dialog-apply").classList.add("disabled");
         document.getElementById("frame-dialog-delete").classList.add("disabled");
+
+	Workspace.RenderWorkspace();
 
 }
 
@@ -234,7 +238,8 @@ ImageMethods.ImageSelect = function(e)
                         {
 
                                 var data = file.images[i];
-                                var box = new Box(data.x - Workspace.worldX, data.y - Workspace.worldY, data.width, data.height);
+
+                                var box = new Box(data.position.X() - Workspace.worldX, data.position.Y() - Workspace.worldY, data.width, data.height);
 
                                 if(box.ContainsPoint(point))
                                 {

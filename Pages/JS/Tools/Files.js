@@ -95,14 +95,14 @@ FileData.prototype.Do = function(action)
 
 }
 
-FileData.prototype.Show = function(context)
+FileData.prototype.Show = function()
 {
 
         Logger.LogError("Attempting to call abstract Show method on virtual FileData object.");
 
 }
 
-FileData.prototype.Open = function(json)
+FileData.prototype.Open = function(json, callback)
 {
 
         Logger.LogError("Attempting to call abstract Open method on virtual FileData object.");
@@ -150,16 +150,6 @@ FileData.AddFile = function(file)
         container.style.visibility = "visible";
 
         FileData.currentFile = file.Path();
-        file.Show();
-
-}
-
-FileData.AddNewFile = function(json)
-{
-
-        var path = json.name + CONST_APP_EXTENSION;
-
-        FileData.AddFile(FileData.Construct(path));
 
         if(!FileData.isOpen)
         {
@@ -176,6 +166,59 @@ FileData.AddNewFile = function(json)
         }
 
         FileData.isOpen = true;
+
+        file.Show();
+
+}
+
+FileData.AddNewFile = function(json)
+{
+
+        var path = json.name + "." + CONST_APP_EXTENSION;
+
+        FileData.AddFile(FileData.Construct(path));
+
+}
+
+FileData.OpenFile = function()
+{
+
+        dialog.showOpenDialog(null, {filters: [{name: 'App Files', extensions: [CONST_APP_EXTENSION]}]}, function(paths)
+        {
+
+                if(!paths || paths.length != 1)
+                {
+
+                        return;
+
+                }
+
+                var file = FileData.Construct(paths[0]);
+
+                fs.readFile(file.Path(), function(err, data)
+                {
+
+                        if(err)
+                        {
+
+                                Logger.LogError("Error " + err + " reading " + file.Path());
+
+                                return;
+
+                        }
+
+                        file.Open(JSON.parse(data), function()
+                        {
+
+                                FileData.AddFile(file);
+
+                                Logger.LogInfo(file.Path() + " successfully read!");
+
+                        });
+
+                });
+
+        });
 
 }
 
@@ -325,6 +368,9 @@ document.addEventListener('DOMContentLoaded', function()
 
         document.getElementById("window-pane-file-open").addEventListener("click", function(e)
         {
+
+                FileData.OpenFile();
+
         });
 
         document.getElementById("window-pane-file-save").addEventListener("click", function(e)

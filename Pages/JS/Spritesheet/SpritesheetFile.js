@@ -13,6 +13,16 @@ SpritesheetFile.prototype.constructor = SpritesheetFile;
 SpritesheetFile.prototype.Show = function(context)
 {
 
+	//Not all apps have workspaces, so FileData.AddFile calls .Show without a context argument
+	if(!context)
+	{
+
+		Workspace.RenderWorkspace();
+
+		return;
+
+	}
+
 	for(var i = 0; i < this.images.length; i++)
 	{
 
@@ -36,8 +46,44 @@ SpritesheetFile.prototype.Show = function(context)
 
 }
 
-SpritesheetFile.prototype.Open = function(json)
+SpritesheetFile.prototype.Open = function(json, callback)
 {
+
+	var loaded = [];
+
+	for(var i = 0; i < json.images.length; i++)
+	{
+
+		var index = i;
+		var image = json.images[i];
+
+		loaded[image.index] = false;
+
+		this.images[image.index] = new ImageData(null, image.duration, image.x, image.y, image.width, image.height);
+		this.images[image.index].image = new Image();
+	        this.images[image.index].image.src = image.image;
+	        this.images[image.index].image.onload = function(e)
+		{
+
+			loaded[index] = true;
+
+			for(var i = 0; i < loaded.length; i++)
+			{
+
+				if(!loaded[index])
+				{
+
+					return;
+
+				}
+
+			}
+
+			callback();
+
+		}
+
+	}
 
 }
 

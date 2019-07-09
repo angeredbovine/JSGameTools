@@ -63,7 +63,7 @@ Workspace.RenderWorkspace = function()
                 context.translate(-Workspace.worldX, -Workspace.worldY);
                 file.Show(context);
                 context.translate(Workspace.worldX, Workspace.worldY);
-                
+
         }
 
 }

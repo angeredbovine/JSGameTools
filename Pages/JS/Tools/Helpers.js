@@ -13,6 +13,6 @@ ToolHelpers.ImageToBase64 = function(image)
         var context = canvas.getContext("2d");
         context.drawImage(image, 0, 0);
 
-        return canvas.toDataURL("image/png").replace(/^data:image\/(png|jpg);base64,/, "");
+        return canvas.toDataURL("image/png");
 
 }

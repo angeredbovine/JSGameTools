@@ -77,6 +77,38 @@
 
 }
 
+.tool-button-plus
+{
+
+    margin: 0px;
+    padding: 0px;
+
+    border-radius: 2px 6px 0px 0px;
+
+    min-width: 25px;
+
+}
+
+.tool-button-minus
+{
+
+    margin: 0px;
+    padding: 0px;
+
+    border-radius: 0px 0px 2px 6px;
+
+    min-width: 25px;
+
+}
+
+.tool-plusminus-buttons
+{
+
+    margin: 0px;
+    padding: 0px;
+
+}
+
 .tool-button:hover
 {
 
@@ -126,14 +158,14 @@
 .tool-dialog-resize
 {
 
-        height: var(--dialog-header-height);
-        width: var(--dialog-header-height);
+    height: var(--dialog-header-height);
+    width: var(--dialog-header-height);
 
-        position: absolute;
-        z-index: 4;
+    position: absolute;
+    z-index: 4;
 
-        bottom: 0px;
-        right: 0px;
+    bottom: 0px;
+    right: 0px;
 
 }
 
@@ -146,8 +178,13 @@
 
 	margin: 0px;
 
-        width: var(--dialog-header-height);
-        height: var(--dialog-header-height);
+    width: var(--dialog-header-height);
+    height: var(--dialog-header-height);
+
+}
+
+.tool-dialog-canvas
+{
 
 }
 
@@ -204,6 +241,30 @@
 
 }
 
+.dialog-data-select
+{
+
+        color: var(--primary-text-color);
+        background-color: var(--dark-background-color);
+
+        font-size: var(--normal-text-size);
+
+        padding: 4px;
+
+        border: 1px solid var(--divider-color);
+
+        width: 100%;
+
+}
+
+.dialog-data-option
+{
+
+    color: color: var(--primary-text-color);
+    font-size: var(--normal-text-size);
+
+}
+
 .dialog-data-buttons
 {
 
@@ -257,6 +318,8 @@ input.dialog-data-decimal:invalid
         left: 50%;
         transform: translate(-50%, -50%);
 
+        visibility: hidden;
+
 }
 
 .popup-header
@@ -273,7 +336,7 @@ input.dialog-data-decimal:invalid
         display: block;
 
         padding: 4px;
-	margin: 0px;
+	    margin: 0px;
 
         overflow: hidden;
 

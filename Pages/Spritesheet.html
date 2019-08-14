@@ -5,6 +5,7 @@
 		<link rel="stylesheet" href="CSS/Theme.css"/>
 		<link rel="stylesheet" href="CSS/ToolsetHeader.css"/>
 		<link rel="stylesheet" href="CSS/ToolsetBody.css"/>
+        <link rel="stylesheet" href="CSS/Spritesheet.css"/>
 		<!-- Scripts -->
 		<script src="JS/Tools/ToolCommands.js"></script>
 		<script src="JS/Tools/Icons.js"></script>
@@ -25,6 +26,7 @@
 
                 <script src="JS/Spritesheet/Constants.js"></script>
                 <script src="JS/Spritesheet/Images.js"></script>
+                <script src="JS/Spritesheet/Animations.js"></script>
                 <script src="JS/Spritesheet/SpritesheetFile.js"></script>
 	</head>
 	<body>
@@ -46,6 +48,7 @@
 						<a class="window-pane-menuitem disabled" id="window-pane-tool-redo">Redo</a>
                                                 <a class="window-pane-menuitem disabled file-needed" id="import-image-button">Import Image</a>
                                                 <a class="window-pane-menuitem" id="frame-dialog-open">Open Frame Dialog</a>
+                                                <a class="window-pane-menuitem" id="animation-dialog-open">Open Animation Dialog</a>
                                         </div>
                                 </div>
                                 <div class="window-pane-singlemenu">
@@ -70,7 +73,7 @@
                 </canvas>
                 <div id="frame-dialog" class="tool-dialog">
                         <div class="tool-dialog-header">
-                                <input id="frame-dialog-close" type="image" src="Theme/Icons/Close.svg" alt="Close Test" class="tool-dialog-close">
+                                <input id="frame-dialog-close" type="image" src="Theme/Icons/Close.svg" alt="Close Frame" class="tool-dialog-close">
                         </div>
                         <table class="dialog-data-table">
                                 <tr class="dialog-data-row">
@@ -122,6 +125,22 @@
                                         </td>
                                 </tr>
                                 <tr class="dialog-data-row">
+                                        <td class="dialog-data-name" data-input="frame-dialog-offsetx">
+                                                Offset X:
+                                        </td>
+                                        <td class="dialog-data-input">
+                                                <input type="text" id="frame-dialog-offsetx" class="dialog-data-text dialog-data-integer" pattern="^\d+$" data-key="offsetx"/>
+                                        </td>
+                                </tr>
+                                <tr class="dialog-data-row">
+                                        <td class="dialog-data-name" data-input="frame-dialog-offsety">
+                                                Offset Y:
+                                        </td>
+                                        <td class="dialog-data-input">
+                                                <input type="text" id="frame-dialog-offsety" class="dialog-data-text dialog-data-integer" pattern="^\d+$" data-key="offsety"/>
+                                        </td>
+                                </tr>
+                                <tr class="dialog-data-row">
                                         <td colspan="2" class="dialog-data-buttons">
                                                 <input type="button" id="frame-dialog-apply" class="tool-button disabled" value="Apply"/>
                                                 <input type="button" id="frame-dialog-delete" class="tool-button dangerous disabled" value="Delete"/>
@@ -129,6 +148,79 @@
                                 </tr>
                         </table>
                         <input id="frame-dialog-resize" type="image" src="Theme/Icons/Resize.svg" alt="Resize" class="tool-dialog-resize">
+                </div>
+                <div id="animation-dialog" class="tool-dialog">
+                        <div class="tool-dialog-header">
+                                <input id="animation-dialog-close" type="image" src="Theme/Icons/Close.svg" alt="Close Animation" class="tool-dialog-close">
+                        </div>
+                        <table class="dialog-data-table">
+                            <tr class="dialog-data-row">
+                                <td class="dialog-data-name" data-input="animation-dialog-animation">
+                                    Animation:
+                                </td>
+                                <td class="dialog-data-input">
+                                    <select id="animation-dialog-animation" class="dialog-data-select animation-needed disabled">
+                                    </select>
+                                </td>
+                                <td class="dialog-data-buttons">
+                                    <table class="tool-plusminus-buttons">
+                                        <tr class="tool-plusminus-buttons">
+                                            <td class="tool-plusminus-buttons">
+                                                <input type="button" id="animation-dialog-addanimation" class="tool-button tool-button-plus file-needed disabled" value="+"/>
+                                            </td>
+                                        </tr>
+                                        <tr class="tool-plusminus-buttons">
+                                            <td class="tool-plusminus-buttons">
+                                                <input type="button" id="animation-dialog-removeanimation" class="tool-button tool-button-minus disabled animation-needed" value="-"/>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr class="dialog-data-row">
+                                    <td class="dialog-data-name" data-input="animation-dialog-name">
+                                            Name:
+                                    </td>
+                                    <td class="dialog-data-input">
+                                            <input type="text" id="animation-dialog-name" class="dialog-data-text" data-key="name"/>
+                                    </td>
+                            </tr>
+                            <tr class="dialog-data-row">
+                                <td colspan="3" class="dialog-data-buttons">
+                                    <input type="button" id="animation-dialog-select" class="tool-button disabled animation-needed" value="Select Frames"/>
+                                </td>
+                            </tr>
+                            <tr class="dialog-data-row">
+                                <td colspan="3" class="dialog-data-input">
+                                    <div class="animation-frame-container">
+                                        <table>
+                                            <tr id="animation-frame-container">
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="dialog-data-row">
+                                <td colspan="3" class="dialog-data-name">
+                                    <canvas id="animation-dialog-preview" class="tool-dialog-canvas">
+                                        Please upgrade your Chromium instance to support canvas.
+                                    </canvas>
+                                </td>
+                            </tr>
+                            <tr class="dialog-data-row">
+                                <td colspan="3" class="dialog-data-buttons">
+                                    <input type="button" id="animation-dialog-play" class="tool-button disabled animation-needed" value="Play"/>
+                                    <input type="button" id="animation-dialog-loop" class="tool-button disabled animation-needed" value="Loop"/>
+                                    <input type="button" id="animation-dialog-pause" class="tool-button disabled animation-needed" value="Pause"/>
+                                </td>
+                            </tr>
+                            <tr class="dialog-data-row">
+                                <td colspan="3" class="dialog-data-buttons">
+                                    <input type="button" id="animation-dialog-save" class="tool-button disabled animation-needed" value="Save"/>
+                                </td>
+                            </tr>
+                        </table>
+                        <input id="animation-dialog-resize" type="image" src="Theme/Icons/Resize.svg" alt="Resize" class="tool-dialog-resize">
                 </div>
                 </div>
                 <div id="popup-container" class="popup-container">
@@ -152,6 +244,23 @@
                                                 </td>
                                         </tr>
                                 </table>
+                        </div>
+                        <div class="popup-box" id="popup-frameDelete">
+                            <div class="popup-header">
+                                Cannot Delete Used Frame
+                            </div>
+                            <table class="popup-data-table">
+                                <tr class="popup-data-row">
+                                    <td class="popup-data-info">
+                                        Cannot delete a frame currently used by animations. Delete or edit animations before continuing.
+                                    </td>
+                                </tr>
+                                <tr class="popup-data-row">
+                                    <td class="popup-data-buttons">
+                                        <input type="button" id="popup-frameDelete-cancel" class="tool-button popup-cancel" value="Okay"/>
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
 		</div>
 	</body>

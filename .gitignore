@@ -1,3 +1,4 @@
 node_modules/
 Pages/JS/Base/
 package-lock.json
+*.sprjson

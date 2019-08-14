@@ -1,15 +1,17 @@
 var dialog = require('electron').remote.dialog;
 
-function ImageData(img, duration, x, y, width, height)
+function ImageData(img, duration, x, y, width, height, offsetx, offsety)
 {
 
 	this.image = img;
 
-        this.duration = duration;
+    this.duration = duration;
 
 	this.position = new Vector2(parseInt(x, 10), parseInt(y, 10));
 	this.width = parseInt(width, 10);
 	this.height = parseInt(height, 10);
+
+	this.offset = new Vector2(parseInt(offsetx, 10), parseInt(offsety, 10));
 
 }
 
@@ -24,6 +26,9 @@ ImageData.prototype.ToJSON = function(i)
         json.y = this.position.Y();
         json.width = this.width;
         json.height = this.height;
+
+		json.offsetx = this.offset.X();
+		json.offsety = this.offset.Y();
 
         return json;
 
@@ -41,6 +46,9 @@ ImageData.EmptyJSON = function()
         json.width = "";
         json.height = "";
 
+		json.offsetx = "";
+		json.offsety = "";
+
         return json;
 
 }
@@ -50,7 +58,7 @@ function AddImageAction(image)
 
         Action.call(this);
 
-        this.image = image;
+        this.image = new ImageData(image, 0, Workspace.worldX, Workspace.worldY, image.width, image.height, image.width / 2, image.height / 2);
 
 }
 
@@ -60,7 +68,7 @@ AddImageAction.prototype.constructor = AddImageAction;
 AddImageAction.prototype.Do = function(file)
 {
 
-        file.images.push(new ImageData(this.image, 0, Workspace.worldX, Workspace.worldY, this.image.width, this.image.height));
+		file.AddImageData(this.image);
 
         Workspace.RenderWorkspace();
 
@@ -69,7 +77,7 @@ AddImageAction.prototype.Do = function(file)
 AddImageAction.prototype.Undo = function(file)
 {
 
-        file.images.pop();
+        file.RemoveImageData(file.images.length - 1);
 
         Workspace.RenderWorkspace();
 
@@ -91,7 +99,7 @@ RemoveImageAction.prototype.constructor = RemoveImageAction;
 RemoveImageAction.prototype.Do = function(file)
 {
 
-        file.images.splice(this.index, 1);
+        file.RemoveImageData(this.index);
 
         Workspace.RenderWorkspace();
 
@@ -100,7 +108,7 @@ RemoveImageAction.prototype.Do = function(file)
 RemoveImageAction.prototype.Undo = function(file)
 {
 
-        file.images.splice(this.index, 0, this.image);
+        file.AddImageData(this.image, this.index);
 
         Workspace.RenderWorkspace();
 
@@ -124,7 +132,7 @@ UpdateImageAction.prototype.constructor = UpdateImageAction;
 UpdateImageAction.prototype.Do = function(file)
 {
 
-        file.images[this.index] = this.update;
+        file.UpdateImageData(this.update, this.index);
 
         Workspace.RenderWorkspace();
 
@@ -135,7 +143,7 @@ UpdateImageAction.prototype.Do = function(file)
 UpdateImageAction.prototype.Undo = function(file)
 {
 
-        file.images[this.index] = this.old;
+        file.UpdateImageData(this.old, this.index);
 
         Workspace.RenderWorkspace();
 
@@ -198,7 +206,7 @@ ImageMethods.Select = function(index, file)
         document.getElementById("frame-dialog-apply").classList.remove("disabled");
         document.getElementById("frame-dialog-delete").classList.remove("disabled");
 
-	Workspace.RenderWorkspace();
+		Workspace.RenderWorkspace();
 
 }
 
@@ -212,7 +220,7 @@ ImageMethods.Deselect = function()
         document.getElementById("frame-dialog-apply").classList.add("disabled");
         document.getElementById("frame-dialog-delete").classList.add("disabled");
 
-	Workspace.RenderWorkspace();
+		Workspace.RenderWorkspace();
 
 }
 
@@ -222,7 +230,7 @@ ImageMethods.ImageSelect = function(e)
         e = e || window.event;
         e.preventDefault();
 
-        if(e.button == 0)
+        if(e.button == 0 && !AnimationMethods.animation_selection)
         {
 
                 var file = FileData.GetFile();
@@ -310,7 +318,7 @@ ImageMethods.UpdateImage = function()
                 var json = Dialog.PullData("frame-dialog");
                 var data = file.images[ImageMethods.selectedImage];
 
-                FileData.Do(new UpdateImageAction(ImageMethods.selectedImage, new ImageData(data.image, json.duration, json.x, json.y, json.width, json.height), data));
+                FileData.Do(new UpdateImageAction(ImageMethods.selectedImage, new ImageData(data.image, json.duration, json.x, json.y, json.width, json.height, json.offsetx, json.offsety), data));
 
         }
 
@@ -332,9 +340,20 @@ ImageMethods.DeleteImage = function()
 
                 }
 
+				if(file.ImageUsed(ImageMethods.selectedImage))
+				{
+
+					Popup.ShowPopup("popup-frameDelete", {}, function(){});
+
+					return;
+
+				}
+
                 var data = file.images[ImageMethods.selectedImage];
 
                 FileData.Do(new RemoveImageAction(ImageMethods.selectedImage, data));
+
+				Dialog.FillDialog("frame-dialog", ImageData.EmptyJSON());
 
         }
 

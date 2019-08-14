@@ -10,4 +10,5 @@
 
                 <script src="JS/Spritesheet/Constants.js"></script>
                 <script src="JS/Spritesheet/Images.js"></script>
+                <script src="JS/Spritesheet/Animations.js"></script>
                 <script src="JS/Spritesheet/SpritesheetFile.js"></script>

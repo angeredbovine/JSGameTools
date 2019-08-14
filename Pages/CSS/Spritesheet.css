@@ -1,0 +1,33 @@
+.animation-frame-index
+{
+
+    color: #aaffaa;
+
+    min-width: 25px;
+    min-height: 25px;
+
+    text-align: center;
+
+}
+
+.animation-frame-selected
+{
+
+    border-left: 1px solid #ffffaa;
+
+}
+
+.animation-frame-container
+{
+
+    width: 100%;
+
+    height: 25px;
+    min-height: 25px;
+
+    background-color: var(--secondary-background-color);
+
+    border: 1px solid var(--divider-color);
+    border-radius: 2px 6px 2px 6px;
+
+}

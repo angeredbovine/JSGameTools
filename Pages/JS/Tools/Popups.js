@@ -13,6 +13,8 @@ Popup.ShowPopup = function(id, json, callback)
         popupContainer.style.visibility = "visible";
 
         Popup.currentPopupId = id;
+        var popup = document.getElementById(id);
+        popup.style.visibility = "visible";
 
         Popup.FillPopup(json);
 
@@ -79,6 +81,9 @@ Popup.HidePopup = function()
         var popupContainer = document.getElementById("popup-container");
         popupContainer.style.visibility = "hidden";
 
+        var popup = document.getElementById(Popup.currentPopupId);
+        popup.style.visibility = "hidden";
+
 }
 
 document.addEventListener('DOMContentLoaded', function()
@@ -90,10 +95,20 @@ document.addEventListener('DOMContentLoaded', function()
         {
 
                 var confirm = document.getElementById(popups[i].id + "-ok");
-                confirm.addEventListener("click", Popup.HandlePopup);
+                if(confirm)
+                {
+
+                    confirm.addEventListener("click", Popup.HandlePopup);
+
+                }
 
                 var cancel = document.getElementById(popups[i].id + "-cancel");
-                cancel.addEventListener("click", Popup.HidePopup);
+                if(cancel)
+                {
+
+                    cancel.addEventListener("click", Popup.HidePopup);
+
+                }
 
         }
 

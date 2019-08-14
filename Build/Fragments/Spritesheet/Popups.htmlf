@@ -1,0 +1,17 @@
+                        <div class="popup-box" id="popup-frameDelete">
+                            <div class="popup-header">
+                                Cannot Delete Used Frame
+                            </div>
+                            <table class="popup-data-table">
+                                <tr class="popup-data-row">
+                                    <td class="popup-data-info">
+                                        Cannot delete a frame currently used by animations. Delete or edit animations before continuing.
+                                    </td>
+                                </tr>
+                                <tr class="popup-data-row">
+                                    <td class="popup-data-buttons">
+                                        <input type="button" id="popup-frameDelete-cancel" class="tool-button popup-cancel" value="Okay"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>

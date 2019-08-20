@@ -37,8 +37,8 @@
                                         <div class="window-pane-menucontent">
                                                 <a id="window-pane-file-new" class="window-pane-menuitem">New</a>
                                                 <a id="window-pane-file-open" class="window-pane-menuitem">Open</a>
-                                                <a id="window-pane-file-save" class="window-pane-menuitem">Save</a>
-                                                <a id="window-pane-file-saveas" class="window-pane-menuitem">Save As...</a>
+                                                <a id="window-pane-file-save" class="window-pane-menuitem disabled file-needed">Save</a>
+                                                <a id="window-pane-file-saveas" class="window-pane-menuitem disabled file-needed">Save As...</a>
 					</div>
 				</div>
 				<div class="window-pane-singlemenu">
@@ -47,6 +47,8 @@
 						<a class="window-pane-menuitem disabled" id="window-pane-tool-undo">Undo</a>
 						<a class="window-pane-menuitem disabled" id="window-pane-tool-redo">Redo</a>
                                                 <a class="window-pane-menuitem disabled file-needed" id="import-image-button">Import Image</a>
+                                                <a class="window-pane-menuitem disabled file-needed" id="export-image-button">Export Image</a>
+                                                <a class="window-pane-menuitem disabled file-needed" id="export-sheet-button">Export Spritesheet</a>
                                                 <a class="window-pane-menuitem" id="frame-dialog-open">Open Frame Dialog</a>
                                                 <a class="window-pane-menuitem" id="animation-dialog-open">Open Animation Dialog</a>
                                         </div>
@@ -247,7 +249,7 @@
                         </div>
                         <div class="popup-box" id="popup-frameDelete">
                             <div class="popup-header">
-                                Cannot Delete Used Frame
+                                Frame in Use
                             </div>
                             <table class="popup-data-table">
                                 <tr class="popup-data-row">

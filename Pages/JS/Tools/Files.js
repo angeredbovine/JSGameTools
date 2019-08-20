@@ -119,7 +119,7 @@ FileData.prototype.Save = function()
 FileData.prototype.Path = function(p)
 {
 
-        if(p === undefined)
+    if(p === undefined)
 	{
 
 		return this.path;
@@ -234,7 +234,7 @@ FileData.SaveFile = function()
 
         }
 
-        var file = FileData.files[FileData.currentFile]
+        var file = FileData.GetFile();
         var json = file.Save();
         var data = JSON.stringify(json);
 
@@ -258,6 +258,38 @@ FileData.SaveFile = function()
 
 FileData.SaveFileAs = function()
 {
+
+    if(!FileData.currentFile)
+    {
+
+            Logger.LogError("Attempting to Save As without a file active.");
+
+            return;
+
+    }
+
+    dialog.showSaveDialog(null, {filters: [{name: 'App Files', extensions: [CONST_APP_EXTENSION]}]}, function(path)
+    {
+
+        if(!path)
+        {
+
+                return;
+
+        }
+
+        var file = FileData.GetFile();
+
+        var oldPath = file.Path();
+
+        file.Path(path);
+        FileData.AddFile(file);
+
+        delete FileData.files[oldPath];
+
+        FileData.SaveFile();
+
+    });
 
 }
 
@@ -382,6 +414,9 @@ document.addEventListener('DOMContentLoaded', function()
 
         document.getElementById("window-pane-file-saveas").addEventListener("click", function(e)
         {
+
+            FileData.SaveFileAs();
+
         });
 
         document.getElementById("window-pane-tool-undo").addEventListener("click", function(e)

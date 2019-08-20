@@ -8,6 +8,9 @@ function SpritesheetFile(path)
 	this.images = [];
 	this.animations = [];
 
+	this.sheet_path = {};
+	this.image_path = {};
+
 }
 
 SpritesheetFile.prototype = Object.create(FileData.prototype);
@@ -104,11 +107,23 @@ SpritesheetFile.prototype.UpdateAnimationData = function(data, index)
 SpritesheetFile.prototype.Show = function(context)
 {
 
-	//Not all apps have workspaces, so FileData.AddFile calls .Show without a context argument
+	//Not all apps have workspaces, so FileData.AddFile calls .Show without a context argument. Not having a context is a signifier of lifecycle calls to Show, such as switching/opening files.
+	//We can handle any non-render changes here
 	if(!context)
 	{
 
 		Workspace.RenderWorkspace();
+
+		AnimationMethods.ClearAnimationSelect();
+
+		for(var i = 0; i < this.animations.length; i++)
+		{
+
+			AnimationMethods.CreateSelectElement(this.animations[i].name);
+
+		}
+
+		AnimationMethods.ControlButtons();
 
 		return;
 
@@ -142,11 +157,20 @@ SpritesheetFile.prototype.Open = function(json, callback)
 
 	var loaded = [];
 
+	this.sheet_path = json.sheet_path;
+	this.image_path = json.image_path;
+
 	this.sheet = new Spritesheet();
 	this.sheet.Populate(json.sheet, false);
 
 	this.animations = [];
-	this.animations= json.animations.slice(0);
+
+	for(var i = 0; i < json.animations.length; i++)
+	{
+
+		this.animations[i] = new AnimationData(json.animations[i].name, json.animations[i].frames);
+
+	}
 
 	for(var i = 0; i < json.images.length; i++)
 	{
@@ -189,6 +213,9 @@ SpritesheetFile.prototype.Save = function()
 
 	var json = {};
 
+	json.sheet_path = this.sheet_path;
+	json.image_path = this.image_path;
+
 	json.sheet = this.sheet.ToJSON();
 
 	json.animations = [];
@@ -215,9 +242,178 @@ SpritesheetFile.prototype.Save = function()
 
 }
 
+SpritesheetFile.prototype.Dimensions = function()
+{
+
+	var dimensions = {offsetX: 0, offsetY: 0, width: 0, height: 0};
+
+	if(this.images.length <= 0)
+	{
+
+		return dimensions;
+
+	}
+
+	dimensions.offsetX = -this.images[0].position.X();
+	dimensions.offsetY = -this.images[0].position.Y();
+
+	dimensions.width = this.images[0].position.X() + this.images[0].width;
+	dimensions.height = this.images[0].position.Y() + this.images[0].height;
+
+	for(var i = 0; i < this.images.length; i++)
+	{
+
+		var data = this.images[i];
+
+		dimensions.offsetX = -Math.min(data.position.X(), -dimensions.offsetX);
+		dimensions.offsetY = -Math.min(data.position.Y(), -dimensions.offsetY);
+		dimensions.width = Math.max(data.position.X() + data.width, dimensions.width);
+		dimensions.height = Math.max(data.position.Y() + data.height, dimensions.height);
+
+	}
+
+	dimensions.width += dimensions.offsetX;
+	dimensions.height += dimensions.offsetY;
+
+	return dimensions;
+
+}
+
+SpritesheetFile.prototype.ExportSheet = function()
+{
+
+	dialog.showSaveDialog(null, {defaultPath: this.sheet_path, filters: [{name: 'JSON', extensions: ["json"]}]}, function(path)
+    {
+
+		if(!path)
+		{
+
+			return;
+
+		}
+
+		var file = FileData.GetFile();
+
+		var dimensions = file.Dimensions();
+
+		var json = file.sheet.ToJSON(new Vector2(dimensions.offsetX, dimensions.offsetY));
+		var data = JSON.stringify(json);
+
+		fs.writeFile(path, data, function(err)
+        {
+
+                if(err)
+                {
+
+                        Logger.LogError("Error " + err + " exporting sheet to " + path);
+
+                        return;
+
+                }
+
+                Logger.LogInfo("Successfully exported spritesheet to " + path);
+
+				file.sheet_path = path;
+
+        });
+
+	});
+
+}
+
+SpritesheetFile.prototype.ExportImage = function()
+{
+
+	dialog.showSaveDialog(null, {defaultPath: this.image_path, filters: [{name: 'PNG', extensions: ["png"]}]}, function(path)
+	{
+
+		if(!path)
+		{
+
+			return;
+
+		}
+
+		var file = FileData.GetFile();
+
+		var dimensions = file.Dimensions();
+
+		var canvas = document.createElement("canvas");
+		canvas.width = dimensions.width;
+		canvas.height = dimensions.height;
+
+		var context = canvas.getContext("2d");
+
+		for(var i = 0; i < file.images.length; i++)
+		{
+
+			var data = file.images[i];
+			context.drawImage(data.image, data.position.X() + dimensions.offsetX, data.position.Y() + dimensions.offsetY, data.width, data.height);
+
+		}
+
+		var data = canvas.toDataURL("image/png");
+		data = data.replace("data:image/png;base64,", '');
+
+		fs.writeFile(path, data, 'base64', function(err)
+		{
+
+				if(err)
+				{
+
+						Logger.LogError("Error " + err + " exporting image to " + path);
+
+						return;
+
+				}
+
+				Logger.LogInfo("Successfully exported image to " + path);
+
+				file.image_path = path;
+
+		});
+
+	});
+
+}
+
 FileData.Construct = function(path)
 {
 
         return new SpritesheetFile(path);
 
 }
+
+document.addEventListener('DOMContentLoaded', function()
+{
+
+        document.getElementById("export-image-button").addEventListener("click", function(e)
+        {
+
+			var file = FileData.GetFile();
+
+			if(file)
+			{
+
+				file.ExportImage();
+
+			}
+
+        });
+
+		document.getElementById("export-sheet-button").addEventListener("click", function(e)
+		{
+
+			var file = FileData.GetFile();
+
+			if(file)
+			{
+
+				file.ExportSheet();
+
+			}
+
+
+		});
+
+});

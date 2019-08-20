@@ -9,7 +9,7 @@ function AnimationData(name, frames)
 AnimationData.prototype.ToJSON = function()
 {
 
-    var json = [];
+    var json = {};
 
     json.name = this.name;
     json.frames = this.frames.slice(0);
@@ -247,6 +247,14 @@ AnimationMethods.RemoveSelectElement = function(name)
         }
 
     }
+
+}
+
+AnimationMethods.ClearAnimationSelect = function()
+{
+
+    var dropdown = document.getElementById("animation-dialog-animation");
+    dropdown.innerHTML = "";
 
 }
 

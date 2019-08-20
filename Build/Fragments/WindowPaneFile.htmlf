@@ -5,5 +5,5 @@
                                         <div class="window-pane-menucontent">
                                                 <a id="window-pane-file-new" class="window-pane-menuitem">New</a>
                                                 <a id="window-pane-file-open" class="window-pane-menuitem">Open</a>
-                                                <a id="window-pane-file-save" class="window-pane-menuitem">Save</a>
-                                                <a id="window-pane-file-saveas" class="window-pane-menuitem">Save As...</a>
+                                                <a id="window-pane-file-save" class="window-pane-menuitem disabled file-needed">Save</a>
+                                                <a id="window-pane-file-saveas" class="window-pane-menuitem disabled file-needed">Save As...</a>

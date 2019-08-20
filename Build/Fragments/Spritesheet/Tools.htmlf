@@ -1,3 +1,5 @@
                                                 <a class="window-pane-menuitem disabled file-needed" id="import-image-button">Import Image</a>
+                                                <a class="window-pane-menuitem disabled file-needed" id="export-image-button">Export Image</a>
+                                                <a class="window-pane-menuitem disabled file-needed" id="export-sheet-button">Export Spritesheet</a>
                                                 <a class="window-pane-menuitem" id="frame-dialog-open">Open Frame Dialog</a>
                                                 <a class="window-pane-menuitem" id="animation-dialog-open">Open Animation Dialog</a>

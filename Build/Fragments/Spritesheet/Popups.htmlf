@@ -1,6 +1,6 @@
                         <div class="popup-box" id="popup-frameDelete">
                             <div class="popup-header">
-                                Cannot Delete Used Frame
+                                Frame in Use
                             </div>
                             <table class="popup-data-table">
                                 <tr class="popup-data-row">

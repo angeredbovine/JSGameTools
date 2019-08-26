@@ -7,6 +7,7 @@
                 <script src="JS/Base/Shape.js"></script>
                 <script src="JS/Base/Box.js"></script>
                 <script src="JS/Base/Spritesheet.js"></script>
+                <script src="JS/Base/Timer.js"></script>
 
                 <script src="JS/Spritesheet/Constants.js"></script>
                 <script src="JS/Spritesheet/Images.js"></script>

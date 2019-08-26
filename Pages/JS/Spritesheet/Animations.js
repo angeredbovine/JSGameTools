@@ -169,6 +169,10 @@ AnimationMethods.selected_index = -1;
 
 AnimationMethods.animations_created = 0;
 
+AnimationMethods.preview = null;
+AnimationMethods.preview_scale = 1;
+AnimationMethods.preview_paused = false;
+
 AnimationMethods.AddAnimation = function()
 {
 
@@ -427,6 +431,9 @@ AnimationMethods.DisplayAnimation = function(animation)
 
     AnimationMethods.DisplayFrames(animation.frames, animation.frames.length);
 
+    AnimationMethods.Preview();
+    AnimationMethods.RenderAnimation();
+
 }
 
 AnimationMethods.DisplayFrames = function(frames, index)
@@ -474,9 +481,143 @@ AnimationMethods.AnimationChanged = function()
 
             AnimationMethods.DisplayAnimation(file.animations[i]);
 
+            if(file.animations[i].frames.length > 0)
+            {
+
+                AnimationMethods.Preview();
+
+            }
+
             return;
 
         }
+
+    }
+
+}
+
+AnimationMethods.Preview = function()
+{
+
+        var file = FileData.GetFile();
+
+        AnimationMethods.preview = new SheetReference(file.sheet);
+
+        //Set the correct animation
+        var name = document.getElementById("animation-dialog-animation").value;
+        var index = file.animations.findIndex(function(element)
+        {
+
+            return element.name == name;
+
+        });
+
+        AnimationMethods.preview.currentAnimation = index;
+
+        //Compute the preview scale
+        var canvas = document.getElementById("animation-dialog-preview");
+        var context = canvas.getContext('2d');
+
+        AnimationMethods.preview_scale = 1;
+
+        var center = new Vector2(canvas.width / 2, canvas.height / 2);
+        for(var i = 0; i < file.animations[index].frames.length; i++)
+        {
+
+            var data = file.images[file.animations[index].frames[i]];
+
+            if(data.offset.X() > 0)
+            {
+
+                AnimationMethods.preview_scale = Math.min(center.X() / data.offset.X(), AnimationMethods.preview_scale);
+
+            }
+
+            if(data.offset.Y() > 0)
+            {
+
+                AnimationMethods.preview_scale = Math.min(center.Y() / data.offset.Y(), AnimationMethods.preview_scale);
+
+            }
+
+            if(data.width - data.offset.X() > 0)
+            {
+
+                AnimationMethods.preview_scale = Math.min((canvas.width - center.X()) / (data.width - data.offset.X()), AnimationMethods.preview_scale);
+
+            }
+
+            if(data.height - data.offset.Y() > 0)
+            {
+
+                AnimationMethods.preview_scale = Math.min((canvas.height - center.Y()) / (data.height - data.offset.Y()), AnimationMethods.preview_scale);
+
+            }
+
+        }
+
+}
+
+AnimationMethods.Play = function(loop)
+{
+
+    if(AnimationMethods.preview)
+    {
+
+        Timer.Reset();
+
+        AnimationMethods.preview.loop = loop;
+        AnimationMethods.preview.Start();
+
+        requestAnimationFrame(AnimationMethods.Update);
+
+    }
+
+}
+
+AnimationMethods.Update = function()
+{
+
+    if(AnimationMethods.preview && !AnimationMethods.preview_paused)
+    {
+
+        AnimationMethods.preview.Lookup();
+
+        AnimationMethods.RenderAnimation();
+
+        requestAnimationFrame(AnimationMethods.Update);
+
+    }
+
+}
+
+AnimationMethods.RenderAnimation = function()
+{
+
+    if(!Workspace.tile)
+    {
+
+            return;
+
+    }
+
+    var canvas = document.getElementById("animation-dialog-preview");
+    var context = canvas.getContext('2d');
+
+    context.clearRect(0, 0, canvas.width, canvas.height);
+
+    context.fillStyle = Workspace.tile;
+    context.fillRect(0, 0, canvas.width, canvas.height);
+
+    if(AnimationMethods.preview)
+    {
+
+        var file = FileData.GetFile();
+        var data = file.images[file.animations[AnimationMethods.preview.currentAnimation].frames[(AnimationMethods.preview.currentFrame >= 0 ? AnimationMethods.preview.currentFrame : 0)]];
+        var center = new Vector2(canvas.width / 2, canvas.height / 2);
+        var scale = AnimationMethods.preview_scale;
+
+        context.drawImage(data.image, center.X() - (data.offset.X() * scale), center.Y() - (data.offset.Y() * scale), data.width * scale, data.height * scale);
 
     }
 
@@ -493,5 +634,41 @@ document.addEventListener('DOMContentLoaded', function()
     document.getElementById("animation-dialog-select").addEventListener("click", AnimationMethods.StartFrameSelection);
 
     document.getElementById("animation-dialog-save").addEventListener("click", AnimationMethods.UpdateAnimation);
+
+    document.getElementById("animation-dialog-play").addEventListener('click', function(event)
+    {
+
+        AnimationMethods.Play(false);
+
+    });
+
+    document.getElementById("animation-dialog-loop").addEventListener('click', function(event)
+    {
+
+        AnimationMethods.Play(true);
+
+    });
+
+    document.getElementById("animation-dialog-pause").addEventListener('click', function(event)
+    {
+
+        if(AnimationMethods.preview_paused)
+        {
+
+            AnimationMethods.preview_paused = false;
+            Timer.Unpause();
+
+            AnimationMethods.Update();
+
+        }
+        else
+        {
+
+            AnimationMethods.preview_paused = true;
+            Timer.Pause();
+
+        }
+
+    });
 
 });

@@ -1,7 +1,8 @@
 /*To make a new application, one must:
         -Create a child class of FileData that overrides the abstract methods
         -Create children of the Action class to interact/change the custom file object
-        -Override the static FileData.construct method to return a copy of the custom file object
+        -Override the static FileData.Construct method to return a copy of the custom file object
+        -Override the static FileData.HandleOpen method to update the UI when a file is opened
 */
 
 var fs = require("fs");
@@ -212,6 +213,8 @@ FileData.OpenFile = function()
 
                                 FileData.AddFile(file);
 
+                                FileData.HandleOpen();
+
                                 Logger.LogInfo(file.Path() + " successfully read!");
 
                         });
@@ -297,6 +300,13 @@ FileData.Construct = function(path)
 {
 
         Logger.LogError("Attempting to build a virtual FileData object.");
+
+}
+
+FileData.HandleOpen = function(path)
+{
+
+        Logger.LogError("Attempting to open a virtual FileData object.");
 
 }
 

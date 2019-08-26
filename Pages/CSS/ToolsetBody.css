@@ -186,6 +186,11 @@
 .tool-dialog-canvas
 {
 
+    background-color: var(--secondary-background-color);
+
+    min-width: 250px;
+    min-height: 250px;
+
 }
 
 .dialog-data-table

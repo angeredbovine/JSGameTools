@@ -180,7 +180,7 @@ SpritesheetFile.prototype.Open = function(json, callback)
 
 		loaded[image.index] = false;
 
-		this.images[image.index] = new ImageData(null, image.duration, image.x, image.y, image.width, image.height);
+		this.images[image.index] = new ImageData(null, image.duration, image.x, image.y, image.width, image.height, image.offsetx, image.offsety);
 		this.images[image.index].image = new Image();
 	    this.images[image.index].image.src = image.image;
 	    this.images[image.index].image.onload = function(e)
@@ -381,6 +381,13 @@ FileData.Construct = function(path)
 {
 
         return new SpritesheetFile(path);
+
+}
+
+FileData.HandleOpen = function()
+{
+
+	AnimationMethods.AnimationChanged();
 
 }
 
